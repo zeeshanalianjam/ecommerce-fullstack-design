@@ -1,71 +1,107 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { HiOutlineExternalLink } from "react-icons/hi";
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 const HeroSectionMenus = () => {
-    const user = [
+  const user = [
     {
       name: "John Doe",
       mobile: "1234567890",
       role: "User",
-    }]
+    },
+  ];
   return (
-     <div>
-
-      <div className="text-sm grid gap-1">
-       
-        <Link
-          to={"/dashboard/myorders"}
-          className="px-2 hover:bg-orange-200 py-1"
+    <div>
+      <div className="text-sm grid gap-2">
+        <NavLink
+          to={"/user-layouts/automobiles"}
+          className={({ isActive }) =>
+            `${
+              isActive ? "bg-[#E5F1FF] text-black font-medium" : "text-gray-600"
+            } px-2 hover:bg-[#E5F1FF] py-2 rounded-md`
+          }
         >
-         Automobiles
-        </Link>
+          Automobiles
+        </NavLink>
 
-        <Link
-          to={"/dashboard/address"}
-          className="px-2 hover:bg-orange-200 py-1"
+        <NavLink
+          to={"/user-layouts/clothes-and-wear"}
+          className={({ isActive }) =>
+            `${
+              isActive ? "bg-[#E5F1FF] text-black font-medium" : "text-gray-600"
+            } px-2 hover:bg-[#E5F1FF] py-2 rounded-md`
+          }
         >
           Clothes and wear
-        </Link>
-        <Link
-          to={"/dashboard/address"}
-          className="px-2 hover:bg-orange-200 py-1"
+        </NavLink>
+
+        <NavLink
+          to={"/user-layouts/home-interiors"}
+          className={({ isActive }) =>
+            `${
+              isActive ? "bg-[#E5F1FF] text-black font-medium" : "text-gray-600"
+            } px-2 hover:bg-[#E5F1FF] py-2 rounded-md`
+          }
         >
           Home interiors
-        </Link>
-        <Link
-          to={"/dashboard/address"}
-          className="px-2 hover:bg-orange-200 py-1"
+        </NavLink>
+
+        <NavLink
+          to={"/user-layouts/computer-and-tech"}
+          className={({ isActive }) =>
+            `${
+              isActive ? "bg-[#E5F1FF] text-black font-medium" : "text-gray-600"
+            } px-2 hover:bg-[#E5F1FF] py-2 rounded-md`
+          }
         >
           Computer and tech
-        </Link>
-        <Link
-          to={"/dashboard/address"}
-          className="px-2 hover:bg-orange-200 py-1"
+        </NavLink>
+
+        <NavLink
+          to={"/user-layouts/tools-and-equipments"}
+          className={({ isActive }) =>
+            `${
+              isActive ? "bg-[#E5F1FF] text-black font-medium" : "text-gray-600"
+            } px-2 hover:bg-[#E5F1FF] py-2 rounded-md`
+          }
         >
           Tools, equipments
-        </Link>
-        <Link
-          to={"/dashboard/address"}
-          className="px-2 hover:bg-orange-200 py-1"
+        </NavLink>
+
+        <NavLink
+          to={"/user-layouts/sports-and-outdoor"}
+          className={({ isActive }) =>
+            `${
+              isActive ? "bg-[#E5F1FF] text-black font-medium" : "text-gray-600"
+            } px-2 hover:bg-[#E5F1FF] py-2 rounded-md`
+          }
         >
-            Sports and outdoor
-        </Link>
-        <Link
-          to={"/dashboard/address"}
-          className="px-2 hover:bg-orange-200 py-1"
+          Sports and outdoor
+        </NavLink>
+
+        <NavLink
+          to={"/user-layouts/animal-and-pets"}
+          className={({ isActive }) =>
+            `${
+              isActive ? "bg-[#E5F1FF] text-black font-medium" : "text-gray-600"
+            } px-2 hover:bg-[#E5F1FF] py-2 rounded-md`
+          }
         >
           Animal and pets
-        </Link>
-        <Link
-          to={"/dashboard/address"}
-          className="px-2 hover:bg-orange-200 py-1"
+        </NavLink>
+
+        <NavLink
+          to={"/user-layouts/more-category"}
+          className={({ isActive }) =>
+            `${
+              isActive ? "bg-[#E5F1FF] text-black font-medium" : "text-gray-600"
+            } px-2 hover:bg-[#E5F1FF] py-2 rounded-md`
+          }
         >
           More category
-        </Link>
+        </NavLink>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HeroSectionMenus
+export default HeroSectionMenus;

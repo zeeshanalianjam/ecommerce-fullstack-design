@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Header />
-      <main>
+      <main className="bg-[f7fafc]">
         <Outlet />
       </main>
       <Footer />

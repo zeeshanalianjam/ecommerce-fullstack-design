@@ -6,7 +6,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 const Navbar = () => {
   return (
     <nav className="bg-white w-full  py-3 border-b border-t border-gray-200">
-      <div className="container text-[#1C1C1C] mx-auto px-4 flex items-center justify-between">
+      <div className="container font-medium text-[#1C1C1C] mx-auto px-4 flex items-center justify-between">
         
         {/* Left side */}
         <div className="flex items-center space-x-4">
