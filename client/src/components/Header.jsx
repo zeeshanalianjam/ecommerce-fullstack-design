@@ -9,6 +9,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { Navbar } from "./export";
 
 const Header = () => {
+ 
   return (
     <>
       <div className="w-full">

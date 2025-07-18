@@ -9,7 +9,7 @@ import { IoIosArrowUp } from "react-icons/io";
 
 const Footer = () => {
   return (
-    <div className="mt-28 bg-[#FFFFFF] pt-9">
+    <div className=" bg-[#FFFFFF] pt-9">
       <div className="mx-auto w-full  px-4 xl:px-4">
         <div className="flex flex-col justify-between sm:px-[18px] md:flex-row md:px-10">
           <div className="md:w-[316px]">

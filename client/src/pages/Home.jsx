@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import HeroSectionLayouts from '../layouts/HeroSectionLayouts'
 import { useNavigate } from 'react-router-dom';
-import DealsAndOffersShowCase from '../components/DealsAndOffersShowCase';
-import HomeAndOutdoorShowCase from '../components/HomeAndOutdoorShowCase';
+import {DealsAndOffersShowCase, HomeAndOutdoorShowCase, ConsumerElectronicsAndGadgetsShowCase, RequestQuote, RecomendedItems, ExtraServices, Regions, NewsLetterSubsciption} from '../components/export';
+
 
 const Home = () => {
   const navigate = useNavigate();
@@ -16,6 +16,12 @@ const Home = () => {
         <HeroSectionLayouts />
         <DealsAndOffersShowCase />
         <HomeAndOutdoorShowCase />
+        <ConsumerElectronicsAndGadgetsShowCase />
+        <RequestQuote />
+        <RecomendedItems />
+        <ExtraServices />
+        <Regions />
+        <NewsLetterSubsciption />
       </div>
     </section>
   )
