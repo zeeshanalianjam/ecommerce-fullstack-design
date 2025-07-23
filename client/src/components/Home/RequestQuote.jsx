@@ -1,5 +1,5 @@
 import React from 'react';
-import requestBG from '../assets/backgrounds/requestBG.png'
+import requestBG from '../../assets/backgrounds/requestBG.png'
 
 const RequestQuote = () => {
   return (

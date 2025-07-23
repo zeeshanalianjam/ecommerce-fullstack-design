@@ -1,13 +1,13 @@
 import React from "react";
-import tshirt from "../assets/cloth/tshirt.png";
-import jeans from "../assets/cloth/jeans.png"
-import coat from "../assets/cloth/coat.png"
-import bag from "../assets/cloth/bag.png"
-import half from "../assets/cloth/half.png"
-import wallet from "../assets/cloth/wallet.png"
-import matka from "../assets/interior/2.png"
-import headPhones from "../assets/tech/9.jpg"
-import cattle from "../assets/tech/10.jpg"
+import tshirt from "../../assets/cloth/tshirt.png";
+import jeans from "../../assets/cloth/jeans.png"
+import coat from "../../assets/cloth/coat.png"
+import bag from "../../assets/cloth/bag.png"
+import half from "../../assets/cloth/half.png"
+import wallet from "../../assets/cloth/wallet.png"
+import matka from "../../assets/interior/2.png"
+import headPhones from "../../assets/tech/9.jpg"
+import cattle from "../../assets/tech/10.jpg"
 
 
 

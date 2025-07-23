@@ -1,6 +1,6 @@
 import React from "react";
-import banner from "../assets/backgrounds/banner.png";
-import avatar from "../assets/Avatar.png";
+import banner from "../../assets/backgrounds/banner.png";
+import avatar from "../../assets/Avatar.png";
 
 const Automobiles = () => {
   return (

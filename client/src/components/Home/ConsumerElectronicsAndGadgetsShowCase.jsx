@@ -1,13 +1,13 @@
 import React from 'react'
-import smartWathches from "../assets/tech/8.jpg";
-import cameras from "../assets/tech/6.jpg";
-import headphones from "../assets/tech/9.jpg";
-import catle from "../assets/tech/10.jpg";
-import gamingSet from "../assets/tech/5.jpg";
-import laptops from "../assets/tech/7.jpg";
-import smartPhones from "../assets/tech/2.jpg";
-import electricKattle from "../assets/tech/1.jpg";
-import outdoor from "../assets/backgrounds/gadgets.png";
+import smartWathches from "../../assets/tech/8.jpg";
+import cameras from "../../assets/tech/6.jpg";
+import headphones from "../../assets/tech/9.jpg";
+import catle from "../../assets/tech/10.jpg";
+import gamingSet from "../../assets/tech/5.jpg";
+import laptops from "../../assets/tech/7.jpg";
+import smartPhones from "../../assets/tech/2.jpg";
+import electricKattle from "../../assets/tech/1.jpg";
+import outdoor from "../../assets/backgrounds/gadgets.png";
 
 const products = [
   { title: "Smart watches", price: "USD 19", img: smartWathches },

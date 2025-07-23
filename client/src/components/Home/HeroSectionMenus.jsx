@@ -2,13 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const HeroSectionMenus = () => {
-  const user = [
-    {
-      name: "John Doe",
-      mobile: "1234567890",
-      role: "User",
-    },
-  ];
+ 
   return (
     <div>
       <div className="text-sm grid gap-2">

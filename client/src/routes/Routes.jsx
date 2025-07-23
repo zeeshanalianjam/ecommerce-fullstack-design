@@ -1,8 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import { Home } from "../pages/exportPages";
-import HeroSectionLayouts from "../layouts/HeroSectionLayouts";
-import {AnimalAndParts, Automobiles, ClothesAndWear, ComputerAndTech, HomeInteriors, MoreCategory, SportsAndOutdoor, ToolsEquipments} from "../components/export"
+import { Details, Home, ListView, MyCart } from "../pages/exportPages";
+import {
+  AnimalAndParts,
+  Automobiles,
+  ClothesAndWear,
+  ComputerAndTech,
+  Description,
+  HomeInteriors,
+  MobileAccessories,
+  MoreCategory,
+  SportsAndOutdoor,
+  ToolsEquipments,
+} from "../components/export";
 
 const router = createBrowserRouter([
   {
@@ -23,30 +33,54 @@ const router = createBrowserRouter([
           },
           {
             path: "/user-layouts/home-interiors",
-            element : <HomeInteriors />,
+            element: <HomeInteriors />,
           },
           {
             path: "/user-layouts/computer-and-tech",
-            element : <ComputerAndTech />
+            element: <ComputerAndTech />,
           },
           {
             path: "/user-layouts/tools-and-equipments",
-            element : <ToolsEquipments />
+            element: <ToolsEquipments />,
           },
           {
             path: "/user-layouts/sports-and-outdoor",
-            element : <SportsAndOutdoor />
+            element: <SportsAndOutdoor />,
           },
           {
             path: "/user-layouts/animal-and-pets",
-            element : <AnimalAndParts />
+            element: <AnimalAndParts />,
           },
           {
             path: "/user-layouts/more-category",
-            element : <MoreCategory />
+            element: <MoreCategory />,
           },
         ],
       },
+      {
+        path: "list-view",
+        element: <ListView />,
+        children: [
+          {
+            path: "/list-view/category/mobile-accessories",
+            element: <MobileAccessories />,
+          },
+        ],
+      },
+      {
+        path: "details",
+        element: <Details />,
+        children: [
+          {
+            path: "/details/category-name/category-id/catgory-name/product-name/product-id/description",
+            element: <Description />
+          }
+        ]
+      },
+      {
+        path : "cart",
+        element : <MyCart />
+      }
     ],
   },
 ]);

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../assets/logo-colored.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { MdMessage } from "react-icons/md";
@@ -9,7 +9,8 @@ import { FaShoppingCart } from "react-icons/fa";
 import { Navbar } from "./export";
 
 const Header = () => {
- 
+  const location = useLocation();
+
   return (
     <>
       <div className="w-full">
@@ -192,10 +193,17 @@ const Header = () => {
         </div>
       </div>
 
-      {/* navbar menus items  */}
-      <div className="">
-        <Navbar />
-      </div>
+
+      {location.pathname === "/cart" ? (
+        <> </>
+      ) : (
+        <>
+          {" "}
+          <div className="">
+            <Navbar />
+          </div>{" "}
+        </>
+      )}
     </>
   );
 };

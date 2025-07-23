@@ -1,3 +1,6 @@
 import Home from "./Home";
+import ListView from "./ListView";
+import Details from "./Details";
+import MyCart from "./MyCart";
 
-export { Home };
+export { Home, ListView, Details, MyCart };

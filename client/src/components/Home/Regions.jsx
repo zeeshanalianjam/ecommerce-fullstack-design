@@ -1,13 +1,13 @@
 import React from "react";
-import arabEmirates from "../assets/flags/AE.png";
-import australia from "../assets/flags/Aus.png";
-import unitedStates from "../assets/flags/US.png";
-import russia from "../assets/flags/RU.png";
-import italy from "../assets/flags/IT.png";
-import denmark from "../assets/flags/DK.png";
-import france from "../assets/flags/FR.png";
-import china from "../assets/flags/CN.png";
-import greatBritian from "../assets/flags/GB.png";
+import arabEmirates from "../../assets/flags/AE.png";
+import australia from "../../assets/flags/Aus.png";
+import unitedStates from "../../assets/flags/US.png";
+import russia from "../../assets/flags/RU.png";
+import italy from "../../assets/flags/IT.png";
+import denmark from "../../assets/flags/DK.png";
+import france from "../../assets/flags/FR.png";
+import china from "../../assets/flags/CN.png";
+import greatBritian from "../../assets/flags/GB.png";
 
 const Regions = () => {
   const products = [

@@ -1,8 +1,8 @@
 import React from "react";
-import cottons from "../assets/backgrounds/cottons.png";
-import customPro from "../assets/backgrounds/customPro.png";
-import monitoring from "../assets/backgrounds/monitoring.png";
-import shipping from "../assets/backgrounds/shipping.png";
+import cottons from "../../assets/backgrounds/cottons.png";
+import customPro from "../../assets/backgrounds/customPro.png";
+import monitoring from "../../assets/backgrounds/monitoring.png";
+import shipping from "../../assets/backgrounds/shipping.png";
 import { IoMdSearch } from "react-icons/io";
 import { MdOutlineInventory2 } from "react-icons/md";
 import { MdOutlineSend } from "react-icons/md";

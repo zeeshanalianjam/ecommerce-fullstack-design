@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import HeroSectionLayouts from '../layouts/HeroSectionLayouts'
+import HeroSectionLayouts from '../layouts/Home/HeroSectionLayouts'
 import { useNavigate } from 'react-router-dom';
 import {DealsAndOffersShowCase, HomeAndOutdoorShowCase, ConsumerElectronicsAndGadgetsShowCase, RequestQuote, RecomendedItems, ExtraServices, Regions, NewsLetterSubsciption} from '../components/export';
 

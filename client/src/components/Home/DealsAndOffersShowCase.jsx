@@ -1,10 +1,10 @@
 // EcommerceShowcase.jsx
 import React from 'react';
-import watch from '../assets/tech/8.jpg'
-import laptop from '../assets/tech/7.jpg'
-import camera from '../assets/tech/6.jpg'
-import headphone from '../assets/tech/5.jpg'
-import canon from '../assets/tech/4.jpg'
+import watch from '../../assets/tech/8.jpg'
+import laptop from '../../assets/tech/7.jpg'
+import camera from '../../assets/tech/6.jpg'
+import headphone from '../../assets/tech/5.jpg'
+import canon from '../../assets/tech/4.jpg'
 
 const products = [
   { category: 'Smart watches', discount: '-20%', url : watch },

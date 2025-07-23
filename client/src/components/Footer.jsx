@@ -249,29 +249,25 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        </div>
-        <hr className="mt-[30px] " />
-        <div className="bg-gray-300">
-
-       
+      </div>
+      <hr className="mt-[30px] " />
+      <div className="bg-gray-300">
         <div className="flex items-center  text-gray-500 justify-between pb-8 pt-[9px] md:py-4 container mx-auto px-4 relative">
           <p className="text-[10px] font-medium  md:text-[12px]">
             © 2025 Ecommerce
           </p>
           <div className="flex items-center gap-4">
-
-          <select className="text-sm appearance-none px-4 bg-transparent  focus:outline-none">
-            <option>English</option>
-            <option>Urdu</option>
-          </select>
-          {/* cusstom arrow up */}
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-           <IoIosArrowUp />
-          </div>
+            <select className="text-sm appearance-none px-4 bg-transparent  focus:outline-none">
+              <option>English</option>
+              <option>Urdu</option>
+            </select>
+            {/* cusstom arrow up */}
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+              <IoIosArrowUp />
+            </div>
           </div>
         </div>
-         </div>
-      
+      </div>
     </div>
   );
 };
