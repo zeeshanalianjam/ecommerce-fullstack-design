@@ -39,6 +39,10 @@ import AsideItems from "./Details/AsideItems";
 import RelatedProductCard from "./Details/RelatedProductCard";
 import RelatedProducts from "./Details/RelatedProducts";
 import ShopNowWithSuperDiscount from "./Details/ShopNowWithSuperDiscount";
+import SavedForLaterProducts from "./Cart/SavedForLaterProducts";
+import SavedForLaterProductCard from "./Cart/SavedForLaterProductCard";
+import WhyChooseUs from "./Cart/WhyChooseUs";
+import ShoppingCart from "./Cart/ShoppingCart";
 
 export {
   Header,
@@ -81,5 +85,9 @@ export {
   AsideItems,
   RelatedProductCard,
   RelatedProducts,
-  ShopNowWithSuperDiscount
+  ShopNowWithSuperDiscount,
+  SavedForLaterProducts,
+  SavedForLaterProductCard,
+  WhyChooseUs,
+  ShoppingCart,
 };
