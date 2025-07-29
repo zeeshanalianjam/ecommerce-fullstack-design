@@ -5,6 +5,7 @@ import { apiError } from '../utils/apiError.js';
 import { apiResponse } from '../utils/apiResponse.js';
 import { asynchandler } from '../utils/asyncHandler.js';
 import { verifyEmailTemplate } from '../utils/verifyEmailTemplate.js';
+import jwt from 'jsonwebtoken';
 
 const generateAccessAndRefreshTokens = async userId => {
   try {
@@ -309,12 +310,17 @@ const logout = asynchandler(async (req, res) => {
     };
 
     return res
-    .status(200)
-    .clearCookie('accessToken', cookieOptions)
-    .clearCookie('refreshToken', cookieOptions)
-    .json(
-      new apiResponse(200, 'Logout successful', true, 'You have been logged out')
-    );
+      .status(200)
+      .clearCookie('accessToken', cookieOptions)
+      .clearCookie('refreshToken', cookieOptions)
+      .json(
+        new apiResponse(
+          200,
+          'Logout successful',
+          true,
+          'You have been logged out'
+        )
+      );
   } catch (error) {
     console.error('Error during logout:', error);
     return res
@@ -345,12 +351,7 @@ const imageUpload = asynchandler(async (req, res) => {
       return res
         .status(400)
         .json(
-          new apiError(
-            400,
-            'Please upload an image',
-            false,
-            'Validation Error'
-          )
+          new apiError(400, 'Please upload an image', false, 'Validation Error')
         );
     }
 
@@ -370,7 +371,7 @@ const imageUpload = asynchandler(async (req, res) => {
     }
 
     const updatedUser = await User.findByIdAndUpdate(
-      userId, 
+      userId,
       {
         $set: { avatar: uploadImageToCloudinary.secure_url },
       },
@@ -380,57 +381,52 @@ const imageUpload = asynchandler(async (req, res) => {
     return res
       .status(200)
       .json(
-        new apiResponse(200, 'Image uploaded successfully', updatedUser, true)
+        new apiResponse(200, 'Image uploaded successfully', {avatar: updatedUser.avatar}, true)
       );
   } catch (error) {
     console.error('Error during image upload:', error);
     return res
       .status(500)
       .json(new apiError(500, 'Internal Server Error', false, error.message));
-    
   }
 });
 
 const updateUserDetails = asynchandler(async (req, res) => {
   try {
-    const {name, email, phone} = req.body;
+    const { name, email, phone } = req.body;
 
-   const user = await User.findById(req.user._id);
+    const user = await User.findById(req.user._id);
 
-   if (!user) {
-    return res
-      .status(404)
-      .json(
-        new apiError(
-          404,
-          'User not found',
-          false,
-          'User not found'
-        )
-      );
-   }
+    if (!user) {
+      return res
+        .status(404)
+        .json(new apiError(404, 'User not found', false, 'User not found'))
+    }
 
-   const updatedUser = await User.findByIdAndUpdate(
-     req.user._id,
-     {
-       $set: {name, email, phone}
-     },
+    const updatedUser = await User.findByIdAndUpdate(
+      req.user._id,
+      {
+        $set: { name, email, phone },
+      },
 
-     { new: true, runValidators: true}
+      { new: true, runValidators: true }
     ).select('-password -refreshToken');
 
     return res
       .status(200)
       .json(
-        new apiResponse(200, 'User details updated successfully', updatedUser, true)
+        new apiResponse(
+          200,
+          'User details updated successfully',
+          updatedUser,
+          true
+        )
       );
-
   } catch (error) {
     console.error('Error updating user details:', error);
     return res
       .status(500)
       .json(new apiError(500, 'Internal Server Error', false, error.message));
-    
   }
 });
 
@@ -443,27 +439,108 @@ const getUserDetails = asynchandler(async (req, res) => {
     if (!user) {
       return res
         .status(404)
+        .json(new apiError(404, 'User not found', false, 'User not found'));
+    }
+
+    return res
+      .status(200)
+      .json(
+        new apiResponse(200, 'User details fetched successfully', user, true)
+      );
+  } catch (error) {
+    console.error('Error fetching user details:', error);
+    return res
+      .status(500)
+      .json(new apiError(500, 'Internal Server Error', false, error.message));
+  }
+});
+
+const refreshToken = asynchandler(async (req, res) => {
+  try {
+    const refreshToken =
+      req.cookies.refreshToken ||
+      req.headers.authorization?.replace('Bearer ', '');
+
+    if (!refreshToken) {
+      return res
+        .status(401)
         .json(
           new apiError(
-            404,
-            'User not found',
+            401,
+            'Unauthorized, refresh token is required',
+            false,
+            'Refresh token is required'
+          )
+        );
+    }
+
+    const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+
+    if (!decoded) {
+      return res
+        .status(401)
+        .json(
+          new apiError(
+            401,
+            'Unauthorized, invalid refresh token',
+            false,
+            'Invalid refresh token'
+          )
+        );
+    }
+
+    const user = await User.findById(decoded._id).select(
+      '-password -refreshToken'
+    );
+
+    if (!user) {
+      return res
+        .status(401)
+        .json(
+          new apiError(
+            401,
+            'Unauthorized, user not found',
             false,
             'User not found'
           )
         );
     }
 
+    const { accessToken, refreshToken: newRefreshToken } = await generateAccessAndRefreshTokens(user._id);
+
+    const cookieOptions = {
+      httpOnly: true,
+      secure: true,
+    };
+
     return res
       .status(200)
-      .json
-        (new apiResponse(200, 'User details fetched successfully', user, true));
+      .cookie('accessToken', accessToken, cookieOptions)
+      .cookie('refreshToken', newRefreshToken, cookieOptions)
+      .json(
+        new apiResponse(
+          200,
+          'Access token refreshed successfully',
+          { accessToken },
+          true
+        )
+      );
   } catch (error) {
-    console.error('Error fetching user details:', error);
+    console.error('Error refreshing token:', error);
     return res
       .status(500)
       .json(new apiError(500, 'Internal Server Error', false, error.message));
-    
   }
-})
+});
 
-export { register, verifyEmailHandler, generateAccessAndRefreshTokens, login, logout, imageUpload, updateUserDetails, getUserDetails };
+export {
+  register,
+  verifyEmailHandler,
+  generateAccessAndRefreshTokens,
+  login,
+  logout,
+  imageUpload,
+  updateUserDetails,
+  getUserDetails,
+  refreshToken,
+};

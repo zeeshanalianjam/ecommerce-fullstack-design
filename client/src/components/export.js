@@ -43,6 +43,18 @@ import SavedForLaterProducts from "./Cart/SavedForLaterProducts";
 import SavedForLaterProductCard from "./Cart/SavedForLaterProductCard";
 import WhyChooseUs from "./Cart/WhyChooseUs";
 import ShoppingCart from "./Cart/ShoppingCart";
+import UserMenu from "./User/UserMenu";
+import UserProfileAvatarEdit from "./User/UserProfileAvatarEdit";
+import NoData from "./Category/NoData";
+import UploadCategoryModel from "./Category/UploadCategoryModel";
+import EditCategoryModel from "./Category/EditCategoryModel";
+import DeleteConfirmBox from "./Category/DeleteConfirmBox";
+import UploadBrandModel from "./Brands/UploadBrandModel";
+import EditBrandModel from "./Brands/EditBrandModel";
+import EditFeatureModel from "./Features/EditFeatureModel";
+import UploadFeatureModel from "./Features/UploadFeatureModel";
+import ViewImage from "./Products/ViewImage";
+import { ProductCardAdmin } from "./ProductCardAdmin";
 
 export {
   Header,
@@ -90,4 +102,16 @@ export {
   SavedForLaterProductCard,
   WhyChooseUs,
   ShoppingCart,
+  UserMenu,
+  UserProfileAvatarEdit,
+  NoData,
+  UploadCategoryModel,
+  EditCategoryModel,
+  DeleteConfirmBox,
+  UploadBrandModel,
+  EditBrandModel,
+  EditFeatureModel,
+  UploadFeatureModel,
+  ViewImage,
+  ProductCardAdmin,
 };

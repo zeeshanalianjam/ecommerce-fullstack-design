@@ -6,13 +6,13 @@ const ProductCard = ({ product }) => {
   return (
     <div className="max-w- mx-auto bg-white border border-gray-200 rounded-lg p-4 my-4 shadow-sm">
       {/* Main Row */}
-      <div className="flex space-x-4 items-center relative">
+      <div className="flex space-x-2 items-center relative">
         {/* Product Image */}
         <div>
           <img
-            src={product.image}
+            src={product.image?.[0]}
             alt="Product"
-            className=" object-cover rounded"
+            className="w-48 object-scale-down rounded"
           />
         </div>
 
@@ -20,15 +20,17 @@ const ProductCard = ({ product }) => {
         <div className="flex-1">
           <h2 className="text-gray-800 font-semibold text-lg">
             {product.name}
+            {/* {product.title} */}
           </h2>
 
           {/* Price */}
           <div className="flex items-center space-x-2 mt-3">
             <span className="text-xl font-bold text-black">
-              {product.currentPrice}
+              {product.price.currentPrice} PKR
+              {/* {product.price} */}
             </span>
             <span className="line-through text-gray-400 text-sm">
-              {product.originalPrice}
+              {product.price.originalPrice} PKR
             </span>
           </div>
 
@@ -41,9 +43,11 @@ const ProductCard = ({ product }) => {
                   <AiFillStar key={i} />
                 ))}
             </div>
-            <span className="ml-2 text-gray-600">{product.rating}</span>
+            <span className="ml-2 text-gray-600">{product.ratings}</span>
+            {/* <span className="ml-2 text-gray-600">{product.rating.rate}</span> */}
             <span className="mx-2 text-gray-400">•</span>
             <span className="text-gray-600">{product.orders} orders</span>
+            {/* <span className="text-gray-600">{product.category} orders</span> */}
             <span className="mx-2 text-gray-400">•</span>
             <span className="text-green-600 font-medium">
               {product.shipping}
@@ -52,8 +56,7 @@ const ProductCard = ({ product }) => {
 
           {/* Description */}
           <p className="text-gray-500 text-sm mt-3 max-w-xl">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua
+            {product.description}
           </p>
 
           {/* View details link */}

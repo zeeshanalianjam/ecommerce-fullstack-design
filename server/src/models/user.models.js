@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema(
       type: String, // URL to the Cloudinary
       default: '',
     },
-    mobile: {
+    phone: {
       type: String,
       default: null,
     },

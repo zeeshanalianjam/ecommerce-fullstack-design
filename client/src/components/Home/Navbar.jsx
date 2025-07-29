@@ -2,6 +2,7 @@ import React from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 // import { Menu } from 'lucide-react';
 import { RxHamburgerMenu } from "react-icons/rx";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -11,7 +12,7 @@ const Navbar = () => {
         <div className="flex items-center space-x-4">
           <RxHamburgerMenu className="w-6 h-6 " />
 
-          <span className="text-sm  cursor-pointer">All Category</span>
+          <Link to="/list-view" className="text-sm  cursor-pointer">All Category</Link>
           <span className="text-sm  cursor-pointer">Hot Offers</span>
           <span className="text-sm  cursor-pointer">Gift Boxes</span>
           <span className="text-sm  cursor-pointer">Projects</span>

@@ -1,6 +1,7 @@
 import React from "react";
 import banner from "../../assets/backgrounds/banner.png";
 import avatar from "../../assets/Avatar.png";
+import { Link } from "react-router-dom";
 
 const Automobiles = () => {
   return (
@@ -32,12 +33,15 @@ const Automobiles = () => {
               let’s get stated
             </p>
           </div>
-          <button className="bg-blue-500 text-white px-4 py-1 rounded-md mb-2 hover:bg-blue-600 w-full">
+          <div className="flex flex-col justify-center text-center">
+
+          <Link to="/register" className="bg-blue-500  text-white px-4 py-1 rounded-md mb-2 hover:bg-blue-600 w-full">
             Join now
-          </button>
-          <button className="bg-white border  text-blue-500 px-4 py-1 rounded-md hover:bg-blue-50 w-full">
+          </Link>
+          <Link to="/login" className="bg-white border  text-blue-500 px-4 py-1 rounded-md hover:bg-blue-50 w-full">
             Log in
-          </button>
+          </Link>
+          </div>
         </div>
 
         <div className="bg-orange-400 text-white p-3 rounded shadow text-sm">

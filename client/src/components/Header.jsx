@@ -68,7 +68,7 @@ const Header = () => {
             </li>
           </ul>
           <div className="hidden lg:flex items-center justify-center space-x-8">
-            <Link className=" hidden lg:flex items-center text-gray-500 flex-col justify-center lg:mx-auto py-1.5  cursor-pointer text-center">
+            <Link to="/dashboard/profile" className=" hidden lg:flex items-center text-gray-500 flex-col justify-center lg:mx-auto py-1.5  cursor-pointer text-center">
               <FaUser size={20} />
               <span className="text-sm mt-1">Profile</span>
             </Link>

@@ -1,6 +1,20 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import { Details, Home, ListView, MyCart } from "../pages/exportPages";
+import {
+  Brands,
+  Category,
+  Details,
+  EmailVerification,
+  Features,
+  Home,
+  ListView,
+  Login,
+  MyCart,
+  Products,
+  Profile,
+  Register,
+  UploadProduct,
+} from "../pages/exportPages";
 import {
   AnimalAndParts,
   Automobiles,
@@ -13,6 +27,7 @@ import {
   SportsAndOutdoor,
   ToolsEquipments,
 } from "../components/export";
+import Dashboard from "../layouts/Dashobard/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -73,14 +88,56 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/details/category-name/category-id/catgory-name/product-name/product-id/description",
-            element: <Description />
-          }
-        ]
+            element: <Description />,
+          },
+        ],
       },
       {
-        path : "cart",
-        element : <MyCart />
-      }
+        path: "cart",
+        element: <MyCart />,
+      },
+      {
+        path: "register",
+        element: <Register />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "verify-email",
+        element: <EmailVerification />,
+      },
+      {
+        path: "dashboard",
+        element: <Dashboard />,
+        children: [
+          {
+            path: "/dashboard/profile",
+            element: <Profile />,
+          },
+          {
+            path: "/dashboard/category",
+            element: <Category />,
+          },
+          {
+            path: "/dashboard/brands",
+            element: <Brands />,
+          },
+          {
+            path: "/dashboard/features",
+            element: <Features />,
+          },
+          {
+            path: "/dashboard/upload-product",
+            element: <UploadProduct />,
+          },
+          {
+            path: "/dashboard/products",
+            element: <Products />,
+          },
+        ],
+      },
     ],
   },
 ]);

@@ -26,7 +26,7 @@ const addProduct = asynchandler(async (req, res) => {
       orders,
       shipping,
       reviews,
-      sold
+      sold,
     } = req.body;
 
     if (
@@ -45,9 +45,7 @@ const addProduct = asynchandler(async (req, res) => {
       !stock ||
       !ratings ||
       !orders ||
-      !shipping ||
-      !reviews ||
-      !sold
+      !shipping
     ) {
       return res
         .status(400)
@@ -58,7 +56,7 @@ const addProduct = asynchandler(async (req, res) => {
             false,
             'Missing required fields'
           )
-        )
+        );
     }
 
     const newProduct = await Product.create({
@@ -79,7 +77,7 @@ const addProduct = asynchandler(async (req, res) => {
       orders,
       shipping,
       reviews,
-      sold
+      sold,
     });
 
     if (!newProduct) {
@@ -152,4 +150,56 @@ const getFilterProducts = asynchandler(async (req, res) => {
   }
 });
 
-export { addProduct, getFilterProducts };
+const getAllProducts = asynchandler(async (req, res) => {
+  try {
+    const { page = 1, limit = 10, search = '' } = req.body;
+
+    const skip = (page - 1) * limit;
+
+    const searchFilter = search
+      ? {
+          $or: [
+            { name: { $regex: search, $options: 'i' } },
+            { description: { $regex: search, $options: 'i' } }
+          ],
+        }
+      : {};
+
+    const totalProduts = await Product.countDocuments(searchFilter);
+
+    if (totalProduts === 0) {
+      return res
+        .status(404)
+        .json(
+          new apiError(404, 'No products found', false, 'No products found')
+        );
+    }
+
+    const totalPages = Math.ceil(totalProduts / limit);
+
+    const products = await Product.find(searchFilter)
+      .skip(skip)
+      .limit(limit)
+      .populate('category')
+      .populate('brand')
+      .populate('features');
+
+    return res
+      .status(200)
+      .json(
+        new apiResponse(
+          200,
+          'Products fetched successfully',
+          { products, totalPages, totalProduts, currentPage: page },
+          true
+        )
+      );
+  } catch (error) {
+    console.error('Error adding product:', error);
+    return res
+      .status(500)
+      .json(new apiError(500, 'Internal Server Error', false, error.message));
+  }
+});
+
+export { addProduct, getFilterProducts, getAllProducts };

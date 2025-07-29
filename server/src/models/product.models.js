@@ -66,21 +66,27 @@ const productSchema = new mongoose.Schema(
       required: true,
       default: '2 years full warranty',
     },
-    category: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Category',
-      required: true,
-    },
-    brand: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Brand',
-      required: true,
-    },
-    features: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Feature',
-      required: true,
-    },
+    category: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category',
+        required: true,
+      },
+    ],
+    brand: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Brand',
+        required: true,
+      },
+    ],
+    features: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Feature',
+        required: true,
+      },
+    ],
     image: {
       type: Array,
       default: [],
