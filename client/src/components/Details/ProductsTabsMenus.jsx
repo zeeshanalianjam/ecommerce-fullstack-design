@@ -1,12 +1,16 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 
 const ProductsTabsMenus = () => {
+  const params = useParams();
+  const productId = params["product-id"];
+
+  
   return (
      <div>
       <div className=" text-sm px-2 space-x-4">
         <NavLink
-          to={"/details/category-name/category-id/catgory-name/product-name/product-id/description"}
+          to={"/details/" + productId + "/description"}
           className={({ isActive }) =>
             `${
               isActive ? " text-blue-500 font-medium border-b border-blue-500" : "text-gray-600"

@@ -7,18 +7,61 @@ import { MdMessage } from "react-icons/md";
 import { FaHeart } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { Navbar } from "./export";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const location = useLocation();
+  const myCart = useSelector((state) => state.product.myCart);
+  const [addToCart, setAddToCart] = React.useState([]);
+
+  const cartProducts = JSON.parse(localStorage.getItem("cartProducts"));
+
+  useEffect(() => {
+    if(cartProducts){
+      setAddToCart(cartProducts);
+    }
+  }, [myCart])
+
 
   return (
     <>
       <div className="w-full">
         <nav className="container px-4 mx-auto relative  py-2 flex justify-between items-center bg-white   ">
-          <Link to="/" className=" font-bold ">
-            <img src={logo} alt="" className="w-40" />
+          <Link to="/" className=" font-bold ml-10 md:ml-0">
+            <img src={logo} alt="" className="w-28 md:w-40" />
           </Link>
-          <div className="lg:hidden">
+          {/* mobile view */}
+          <div className="md:hidden flex space-x-4">
+  <Link
+              to="/cart"
+              className="relative md:hidden flex items-center text-gray-500 flex-col justify-center lg:mx-auto py-1.5 cursor-pointer text-center"
+            >
+              {/* Badge */}
+              {addToCart.length > 0 ? (
+                <span className="absolute top-0 right-0 flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full">
+                  {addToCart.length}
+                </span>
+              ): (
+                <span className="absolute top-0 -right-2 flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full">
+                  0
+                </span>
+              )}
+
+              {/* Icon */}
+              <FaShoppingCart size={20} />
+
+              {/* Text */}
+            </Link>
+            
+              <Link
+              to="/dashboard/profile"
+              className=" md:hidden flex items-center text-gray-500 flex-col justify-center lg:mx-auto py-1.5  cursor-pointer text-center"
+            >
+              <FaUser size={20} />
+            </Link>
+          </div>
+         
+          <div className="lg:hidden absolute top-1/2 left-9 transform -translate-y-1/2 -translate-x-[70%]">
             <button
               className="navbar-burger flex items-center text-violet-600 dark:text-gray-100 p-1"
               id="navbar_burger"
@@ -33,6 +76,8 @@ const Header = () => {
               </svg>
             </button>
           </div>
+
+          {/* desktop view */}
           <ul className="hidden absolute top-1/2 left-1/2    transform -translate-y-1/2 -translate-x-[70%] lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
             <li>
               <div className=" relative mx-auto text-gray-600 ">
@@ -68,7 +113,10 @@ const Header = () => {
             </li>
           </ul>
           <div className="hidden lg:flex items-center justify-center space-x-8">
-            <Link to="/dashboard/profile" className=" hidden lg:flex items-center text-gray-500 flex-col justify-center lg:mx-auto py-1.5  cursor-pointer text-center">
+            <Link
+              to="/dashboard/profile"
+              className=" hidden lg:flex items-center text-gray-500 flex-col justify-center lg:mx-auto py-1.5  cursor-pointer text-center"
+            >
               <FaUser size={20} />
               <span className="text-sm mt-1">Profile</span>
             </Link>
@@ -80,12 +128,31 @@ const Header = () => {
               <FaHeart size={20} />
               <span className="text-sm mt-1">Orders</span>
             </Link>
-            <Link className=" hidden lg:flex items-center text-gray-500 flex-col justify-center lg:mx-auto py-1.5  cursor-pointer text-center">
+            <Link
+              to="/cart"
+              className="relative hidden lg:flex items-center text-gray-500 flex-col justify-center lg:mx-auto py-1.5 cursor-pointer text-center"
+            >
+              {/* Badge */}
+              {addToCart.length > 0 ? (
+                <span className="absolute top-0 right-0 flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full">
+                  {addToCart.length}
+                </span>
+              ): (
+                <span className="absolute top-0 right-0 flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full">
+                  0
+                </span>
+              )}
+
+              {/* Icon */}
               <FaShoppingCart size={20} />
+
+              {/* Text */}
               <span className="text-sm mt-1">My Cart</span>
             </Link>
           </div>
         </nav>
+
+        
         {/* mobile navbar */}
         <div className="navbar-menu relative z-50 hidden">
           <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-50" />
@@ -192,7 +259,6 @@ const Header = () => {
           </nav>
         </div>
       </div>
-
 
       {location.pathname === "/cart" ? (
         <> </>

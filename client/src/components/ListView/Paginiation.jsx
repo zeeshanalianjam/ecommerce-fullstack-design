@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { setPage, setShowFix } from "../../redux/productSlice";
 
 const Paginiation = () => {
+  const products = useSelector((state) => state.product.products);
+  const limit = useSelector((state) => state.product.limit);
+  const dispatch = useDispatch();
+
+  const [show, setShow] = useState(5);
+  const { currentPage, totalPages } = products;
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  useEffect(() => {
+    dispatch(setShowFix(show));
+  }, [show]);
+
+  const handlePageChange = (page) => {
+    dispatch(setPage(page));
+    if (page < 1 || page > totalPages) return;
+    
+  };
+
   return (
     <div className=" flex justify-center items-center dark:bg-gray-800">
       <div className="py-2 border-t dark:border-gray-700  w-full">
@@ -10,6 +30,7 @@ const Paginiation = () => {
           aria-label="Pagination Navigation"
           className="flex items-center justify-between"
         >
+          {/* mobile view */}
           <div className="flex justify-between items-center flex-1 lg:hidden">
             <div className="w-10">
               <button
@@ -74,19 +95,25 @@ const Paginiation = () => {
               </button>
             </div>
           </div>
+          {/* desktop view */}
           <div className="hidden flex-1 items-center lg:grid grid-cols-3">
             <div className="flex items-center">
               <div className="pl-2 text-sm font-medium dark:text-white">
-                Showing 11 to 20 of 99 results
+                Showing {(products.currentPage - 1) * limit + 1} to {limit * currentPage} of{" "}
+                {products.totalProduts} results
               </div>
             </div>
             <div className="flex items-center justify-center">
               <div className="flex items-center space-x-2 filament-tables-pagination-records-per-page-selector rtl:space-x-reverse relative">
                 <label>
-                  <select className="h-8 text-sm pr-8 px-2 leading-none transition duration-75 border appearance-none rounded-lg shadow-sm outline-none focus:border-yellow-500 focus:ring-1 focus:ring-inset focus:ring-yellow-500 dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:focus:border-yellow-500">
+                  <select
+                    value={show}
+                    onChange={(e) => setShow(e.target.value)}
+                    className="h-8 text-sm pr-8 px-2 leading-none transition duration-75 border appearance-none rounded-lg shadow-sm outline-none focus:border-yellow-500 focus:ring-1 focus:ring-inset focus:ring-yellow-500 dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:focus:border-yellow-500"
+                  >
                     <option value={5}>Show 5</option>
                     <option value={10}>Show 10</option>
-                    <option value={25}>Show 25</option>
+                    <option value={15}>Show 15</option>
                   </select>
                 </label>
                 {/* Custom Arrow */}
@@ -100,8 +127,10 @@ const Paginiation = () => {
                 <ol className="flex items-center text-sm text-gray-500 divide-x rtl:divide-x-reverse divide-gray-300 dark:text-gray-400 dark:divide-gray-600">
                   <li>
                     <button
+                      onClick={() => handlePageChange(currentPage - 1)}
+                      disabled={currentPage === 1}
                       type="button"
-                      className="relative flex items-center justify-center font-medium min-w-[2rem] px-1.5 h-8 -my-3 rounded-md outline-none hover:bg-gray-500/5 focus:bg-yellow-500/10 focus:ring-2 focus:ring-yellow-500 dark:hover:bg-gray-400/5 transition text-yellow-600"
+                      className="relative disabled:opacity-50 flex items-center justify-center font-medium min-w-[2rem] px-1.5 h-8 -my-3 rounded-md outline-none hover:bg-gray-500/5 focus:bg-yellow-500/10 focus:ring-2 focus:ring-yellow-500 dark:hover:bg-gray-400/5 transition text-yellow-600"
                       aria-label="Previous"
                       rel="prev"
                     >
@@ -120,81 +149,27 @@ const Paginiation = () => {
                       </svg>
                     </button>
                   </li>
+                  {pages.map((page) => (
+                    <li key={page}>
+                      <button
+                        key={page}
+                        onClick={() => handlePageChange(page)}
+                        type="button"
+                        className={`relative ${
+                          currentPage === page
+                            ? "text-yellow-600 focus:ring-yellow-500 ring-yellow-500 ring-2 filament-tables-pagination-item-active focus:underline bg-yellow-500/10"
+                            : "text-gray-500"
+                        } flex items-center justify-center font-medium min-w-[2rem] px-1.5 h-8 -my-3 rounded-md outline-none hover:bg-gray-500/5 focus:bg-yellow-500/10 focus:ring-2  dark:hover:bg-gray-400/5  transition`}
+                      >
+                        <span>{page}</span>
+                      </button>
+                    </li>
+                  ))}
+
                   <li>
                     <button
-                      type="button"
-                      className="relative flex items-center justify-center font-medium min-w-[2rem] px-1.5 h-8 -my-3 rounded-md outline-none hover:bg-gray-500/5 focus:bg-yellow-500/10 focus:ring-2 focus:ring-yellow-500 dark:hover:bg-gray-400/5 focus:text-yellow-600 transition"
-                    >
-                      <span>1</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      type="button"
-                      className="relative flex items-center justify-center font-medium min-w-[2rem] px-1.5 h-8 -my-3 rounded-md outline-none transition text-yellow-600 filament-tables-pagination-item-active focus:underline bg-yellow-500/10 ring-2 ring-yellow-500"
-                    >
-                      <span>2</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      type="button"
-                      className="relative flex items-center justify-center font-medium min-w-[2rem] px-1.5 h-8 -my-3 rounded-md outline-none hover:bg-gray-500/5 focus:bg-yellow-500/10 focus:ring-2 focus:ring-yellow-500 dark:hover:bg-gray-400/5 focus:text-yellow-600 transition"
-                    >
-                      <span>3</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      type="button"
-                      className="relative flex items-center justify-center font-medium min-w-[2rem] px-1.5 h-8 -my-3 rounded-md outline-none hover:bg-gray-500/5 focus:bg-yellow-500/10 focus:ring-2 focus:ring-yellow-500 dark:hover:bg-gray-400/5 focus:text-yellow-600 transition"
-                    >
-                      <span>4</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      type="button"
-                      className="relative flex items-center justify-center font-medium min-w-[2rem] px-1.5 h-8 -my-3 rounded-md outline-none hover:bg-gray-500/5 focus:bg-yellow-500/10 focus:ring-2 focus:ring-yellow-500 dark:hover:bg-gray-400/5 focus:text-yellow-600 transition"
-                    >
-                      <span>5</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      type="button"
-                      className="relative flex items-center justify-center font-medium min-w-[2rem] px-1.5 h-8 -my-3 rounded-md outline-none hover:bg-gray-500/5 focus:bg-yellow-500/10 focus:ring-2 focus:ring-yellow-500 dark:hover:bg-gray-400/5 focus:text-yellow-600 transition"
-                    >
-                      <span>6</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      disabled=""
-                      type="button"
-                      className="relative flex items-center justify-center font-medium min-w-[2rem] px-1.5 h-8 -my-3 rounded-md outline-none filament-tables-pagination-item-disabled cursor-not-allowed pointer-events-none opacity-70"
-                    >
-                      <span>...</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      type="button"
-                      className="relative flex items-center justify-center font-medium min-w-[2rem] px-1.5 h-8 -my-3 rounded-md outline-none hover:bg-gray-500/5 focus:bg-yellow-500/10 focus:ring-2 focus:ring-yellow-500 dark:hover:bg-gray-400/5 focus:text-yellow-600 transition"
-                    >
-                      <span>9</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      type="button"
-                      className="relative flex items-center justify-center font-medium min-w-[2rem] px-1.5 h-8 -my-3 rounded-md outline-none hover:bg-gray-500/5 focus:bg-yellow-500/10 focus:ring-2 focus:ring-yellow-500 dark:hover:bg-gray-400/5 focus:text-yellow-600 transition"
-                    >
-                      <span>10</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button
+                      onClick={() => handlePageChange(currentPage + 1)}
+                      disabled={currentPage === totalPages}
                       type="button"
                       className="relative flex items-center justify-center font-medium min-w-[2rem] px-1.5 h-8 -my-3 rounded-md outline-none hover:bg-gray-500/5 focus:bg-yellow-500/10 focus:ring-2 focus:ring-yellow-500 dark:hover:bg-gray-400/5 transition text-yellow-600"
                       aria-label="Next"

@@ -5,7 +5,7 @@ const HeroSectionMenus = () => {
  
   return (
     <div>
-      <div className="text-sm grid gap-2">
+      <div className="text-sm gap-2 hidden md:grid">
         <NavLink
           to={"/user-layouts/automobiles"}
           className={({ isActive }) =>

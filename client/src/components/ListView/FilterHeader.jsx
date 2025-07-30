@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaThLarge, FaBars } from "react-icons/fa";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setProductLayout } from "../../redux/prodcutLayoutSlice";
 
 const FilterHeader = () => {
@@ -9,6 +9,8 @@ const FilterHeader = () => {
   const [sortOption, setSortOption] = useState("Featured");
   const [viewMode, setViewMode] = useState("list");
   const dispatch = useDispatch();
+  let products = useSelector((state) => state.product.products);
+
 
 
 useEffect(() => {
@@ -20,7 +22,7 @@ useEffect(() => {
     <div className="bg-white border p-4 rounded-lg flex flex-wrap items-center justify-between gap-4">
       {/* Left: Items Count */}
       <div className=" font-medium text-gray-800">
-        12,911 items in <span className="font-semibold">Mobile accessory</span>
+        Showing {products.totalProduts} items in <span className="font-semibold">Mobile accessory</span>
       </div>
 
       {/* Right: Controls */}

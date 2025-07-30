@@ -1,8 +1,13 @@
 import React from "react";
 import { AiFillStar } from "react-icons/ai";
 import { IoIosHeartEmpty } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
+  const navigate = useNavigate();
+  const handleViewProductDetails = () => {
+    navigate(`/details/${product._id}/description`, { state: { product } });
+  }
   return (
     <div className="max-w- mx-auto bg-white border border-gray-200 rounded-lg p-4 my-4 shadow-sm">
       {/* Main Row */}
@@ -12,7 +17,8 @@ const ProductCard = ({ product }) => {
           <img
             src={product.image?.[0]}
             alt="Product"
-            className="w-48 object-scale-down rounded"
+            className="w-48 object-scale-down rounded cursor-pointer"
+            onClick={handleViewProductDetails}
           />
         </div>
 

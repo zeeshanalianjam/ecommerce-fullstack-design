@@ -92,6 +92,10 @@ const summaryApi = {
   fetchAllProdutcs: {
     url: `/api/v1/products/get-all-products`,
     method: "POST",
+  },
+  fetchAllProductsFilter: {
+    url: `/api/v1/products/get-products-by-filter`,
+    method: "GET",
   }
 };
 

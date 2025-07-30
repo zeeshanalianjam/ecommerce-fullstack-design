@@ -5,3 +5,27 @@
 body {
   font-family: 'Inter', sans-serif;
 }
+
+/* scroll smooth */
+html {
+  scroll-behavior: smooth;
+}
+
+.scrollBar{
+  overflow-x: auto;
+}
+.scrollBar::-webkit-scrollbar{
+  height: 1px;
+}
+
+.scrollBar::-webkit-scrollbar-track{
+  background: #f1f1f1;
+}
+
+.scrollBar::-webkit-scrollbar-thumb{
+  background: #888;
+}
+
+.scrollBar::-webkit-scrollbar-thumb:hover{
+  background: #555;
+}

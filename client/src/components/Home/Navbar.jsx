@@ -7,26 +7,40 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="bg-white w-full  py-3 border-b border-t border-gray-200">
-      <div className="container font-medium text-[#1C1C1C] mx-auto px-4 flex items-center justify-between">
+      <div className="container md:font-medium text-[#1C1C1C] mx-auto px-4 flex items-center justify-between">
         {/* Left side */}
-        <div className="flex items-center space-x-4">
-          <RxHamburgerMenu className="w-6 h-6 " />
+        <div className="flex  overflow-x-auto items-center md:space-x-4 scrollBar">
+          <RxHamburgerMenu className="w-6 h-6 hidden md:block" />
 
-          <Link to="/list-view" className="text-sm  cursor-pointer">All Category</Link>
-          <span className="text-sm  cursor-pointer">Hot Offers</span>
-          <span className="text-sm  cursor-pointer">Gift Boxes</span>
-          <span className="text-sm  cursor-pointer">Projects</span>
-          <span className="text-sm  cursor-pointer">Menu Item</span>
-
+          <div className="w-full overflow-x-auto whitespace-nowrap flex md:justify-start space-x-2  md:space-x-6 scrollbar-hide">
+            <Link
+              to="/list-view"
+              className="text-sm bg-gray-100 text-blue-500 md:text-black px-2 py-1 rounded-md md:bg-white md:p-0 md:rounded-none cursor-pointer inline-block"
+            >
+              All Category
+            </Link>
+            <span className="text-sm bg-gray-100 text-blue-500 md:text-black px-2 py-1 rounded-md md:bg-white md:p-0 md:rounded-none cursor-pointer inline-block">
+              Hot Offers
+            </span>
+            <span className="text-sm bg-gray-100 text-blue-500 md:text-black px-2 py-1 rounded-md md:bg-white md:p-0 md:rounded-none cursor-pointer inline-block">
+              Gift Boxes
+            </span>
+            <span className="text-sm bg-gray-100 text-blue-500 md:text-black px-2 py-1 rounded-md md:bg-white md:p-0 md:rounded-none cursor-pointer inline-block">
+              Projects
+            </span>
+            <span className="text-sm bg-gray-100 text-blue-500 md:text-black px-2 py-1 rounded-md md:bg-white md:p-0 md:rounded-none cursor-pointer inline-block">
+              Menu Item
+            </span>
+          </div>
           {/* Help dropdown */}
-          <select className="text-sm  focus:outline-none">
+          <select className="text-sm hidden md:block  focus:outline-none">
             <option>Help</option>
             <option>FAQ</option>
           </select>
         </div>
 
         {/* Right side */}
-        <div className="flex items-center space-x-4">
+        <div className="hidden md:flex items-center space-x-4">
           <select className="text-sm   focus:outline-none">
             <option>English, USD</option>
             <option>Urdu, PKR</option>

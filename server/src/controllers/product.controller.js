@@ -152,20 +152,24 @@ const getFilterProducts = asynchandler(async (req, res) => {
 
 const getAllProducts = asynchandler(async (req, res) => {
   try {
-    const { page = 1, limit = 10, search = '' } = req.body;
+    const { page = 1, limit = 10, search = '', category, brand, features } = req.body;
+
+    const query = {};
+    
+    if(search){
+      query.$or = [
+        { name: { $regex: search, $options: 'i' } },
+        { description: { $regex: search, $options: 'i' } }
+      ];
+    }
+    if(category) query.category = category;
+    if(brand) query.brand = brand;
+    if(features) query.features = features;
 
     const skip = (page - 1) * limit;
 
-    const searchFilter = search
-      ? {
-          $or: [
-            { name: { $regex: search, $options: 'i' } },
-            { description: { $regex: search, $options: 'i' } }
-          ],
-        }
-      : {};
 
-    const totalProduts = await Product.countDocuments(searchFilter);
+    const totalProduts = await Product.countDocuments(query);
 
     if (totalProduts === 0) {
       return res
@@ -177,7 +181,7 @@ const getAllProducts = asynchandler(async (req, res) => {
 
     const totalPages = Math.ceil(totalProduts / limit);
 
-    const products = await Product.find(searchFilter)
+    const products = await Product.find(query)
       .skip(skip)
       .limit(limit)
       .populate('category')
@@ -202,4 +206,37 @@ const getAllProducts = asynchandler(async (req, res) => {
   }
 });
 
-export { addProduct, getFilterProducts, getAllProducts };
+const getAllProductsByFilter = asynchandler(async (req, res) => {
+  try {
+    const brands = await Product.distinct('brand');
+    const categories = await Product.distinct('category');
+    const features = await Product.distinct('features');
+
+    // populate names
+    const populateBrands = await Brand.find({ _id: { $in: brands } });
+    const populateCategories = await Category.find({ _id: { $in: categories } });
+    const populateFeatures = await Feature.find({ _id: { $in: features } });
+
+    return res
+      .status(200)
+      .json(
+        new apiResponse(
+          200,
+          'Products fetched by filter successfully',
+          {
+            brands: populateBrands,
+            categories: populateCategories,
+            features: populateFeatures,
+          },
+          true
+        )
+      )
+  } catch (error) {
+    console.error('Error filtering product:', error);
+    return res
+      .status(500)
+      .json(new apiError(500, 'Internal Server Error', false, error.message));
+  }
+})
+
+export { addProduct, getFilterProducts, getAllProducts, getAllProductsByFilter };
