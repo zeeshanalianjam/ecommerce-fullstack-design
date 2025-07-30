@@ -43,7 +43,7 @@ const ShoppingCart = () => {
     <section className="container mx-auto px-4">
       <div className="flex space-x-2 border-b py-4">
         <h1 className="font-semibold text-2xl">My Cart</h1>
-        <h2 className="font-semibold text-2xl">({data.length > 0 ? data.length : 0}) </h2>
+        <h2 className="font-semibold text-2xl">({data?.length > 0 ? data?.length : 0}) </h2>
       </div>
       <div className="container grid grid-cols-[1fr_280px]  gap-6 my-4  bg-white">
         {/* shopping cart items */}
@@ -54,7 +54,7 @@ const ShoppingCart = () => {
             </h1>
           )}
             {/* cart item */}
-            {data.map((item, index) => (
+            {data?.map((item, index) => (
             <div className="md:flex justify-between border-b pb-6 mb-2">
               <div className="flex   space-x-3">
               <div className="w-20 h-20 px-2 py-1 border shadow-md rounded-md">
