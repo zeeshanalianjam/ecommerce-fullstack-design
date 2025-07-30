@@ -16,7 +16,6 @@ const ShoppingCart = () => {
   const cartProdcts = JSON.parse(localStorage.getItem("cartProducts"));
   const [data, setData] = useState(cartProdcts);
   const dispatch = useDispatch();
-  console.log("data", data);
 
   const paymentMethods = [
     { url: american, alt: "American Express" },
