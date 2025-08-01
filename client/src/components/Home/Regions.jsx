@@ -65,12 +65,12 @@ const Regions = () => {
   return (
     <section className="container mx-auto px-4 my-4 ">
       <div className=" ">
-        <h1 className="font-bold text-2xl mb-4">Suppliers by region</h1>
+        <h1 className="font-bold md:text-2xl mb-4">Suppliers by region</h1>
       </div>
       {/* ✅ Grid Section - Starts Here 👇 */}
       <section
         id="Projects"
-        className="w-fit  grid grid-cols-1 lg:grid-cols-5 md:grid-cols-2    gap-x-16  mt-4 mb-5  "
+        className="w-fit  grid grid-cols-2 lg:grid-cols-5 md:grid-cols-2    md:gap-x-16  mt-4 mb-5  "
       >
         {products.map((item, index) => (
           <div key={index} className="duration-200 hover:scale-105 ">

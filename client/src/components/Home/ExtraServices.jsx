@@ -12,25 +12,25 @@ const ExtraServices = () => {
   const products = [
     {
       image: cottons,
-      icon: <IoMdSearch size={24} />,
+      icon: <IoMdSearch  />,
       name: "Source from",
       brand: "Industry Hubs",
     },
     {
       image: customPro,
-      icon: <MdOutlineInventory2 size={24} />,
+      icon: <MdOutlineInventory2  />,
       name: "Customize Your",
       brand: " Products",
     },
     {
       image: shipping,
-      icon: <MdOutlineSend size={24} />,
+      icon: <MdOutlineSend  />,
       name: "Fast, reliable shipping",
       brand: " by ocean or air",
     },
     {
       image: monitoring,
-      icon: <MdOutlineSecurity size={24} />,
+      icon: <MdOutlineSecurity  />,
       name: "Product monitoring",
       brand: " and inspection",
     },
@@ -38,10 +38,10 @@ const ExtraServices = () => {
   return (
     <section className="container mx-auto px-4 my-4 ">
       <div className=" ">
-        <h1 className="font-bold text-2xl mb-4">Our extra services</h1>
+        <h1 className="font-bold md:text-2xl mb-4">Our extra services</h1>
       </div>
       {/* ✅ Grid Section - Starts Here 👇 */}
-      <section id="Projects" className=" flex space-x-11 mt-4 mb-5  ">
+      <section id="Projects" className=" flex space-x-4 md:space-x-11 mt-4 mb-5 overflow-x-auto  ">
         {products.map((item, index) => (
           <div
             key={index}
@@ -54,7 +54,7 @@ const ExtraServices = () => {
                   alt="Product"
                   className="rouded-tr-md rounded-tl-md"
                 />
-                <span className="border border-white bg-[#D1E7FF] h-14 w-14 absolute -bottom-[30px] right-5  rounded-full flex items-center justify-center ">
+                <span className="border md:text-2xl  border-white bg-[#D1E7FF] h-10 md:h-14 w-10 md:w-14 absolute -bottom-[15px] md:-bottom-[30px] right-5  rounded-full flex items-center justify-center ">
                   {item.icon}
                 </span>
               </div>

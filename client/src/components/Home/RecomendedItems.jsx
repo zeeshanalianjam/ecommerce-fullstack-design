@@ -77,25 +77,25 @@ const RecomendedItems = () => {
   return (
     <section className="container mx-auto px-4 my-4">
       <div className=" ">
-        <h1 className="font-bold text-2xl">Recomended Items</h1>
+        <h1 className="font-bold md:text-2xl">Recomended Items</h1>
       </div>
       {/* ✅ Grid Section - Starts Here 👇 */}
       <section
         id="Projects"
-        className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-5 md:grid-cols-2 justify-items-center justify-center gap-y-8 gap-x-8 mt-4 mb-5 "
+        className="w-fit mx-auto grid grid-cols-2 lg:grid-cols-5 md:grid-cols-2 justify-items-center justify-center gap-y-4 md:gap-y-8 gap-x-10 md:gap-x-8 mt-4 md:mb-5 "
       >
         {products.map((item, index) => (
-        <div key={index} className="w-56 h-[300px] bg-white shadow-md rounded-md duration-500 hover:scale-105 hover:shadow-xl border py-5 relative">
+        <div key={index} className="w-44 md:w-56 h-[260px] md:h-[300px] bg-white shadow-md rounded-md duration-500 hover:scale-105 hover:shadow-xl border py-5 relative">
           <a href="#">
-            <img src={item.image} alt="Product" className=" w-36 mx-auto " />
+            <img src={item.image} alt="Product" className="w-32 md:w-36 mx-auto" />
             <div className="px-4 mt-6 absolute bottom-4">
               <p className=" font-medium text-[#1C1C1C] cursor-auto ">
                 {item.price}
               </p>
-              <p className=" text-gray-400 truncate block capitalize">
+              <p className="text-sm md:text-base text-gray-400 truncate block capitalize">
                 {item.name}
               </p>
-              <p className=" text-gray-400 truncate block capitalize">
+              <p className="text-sm md:text-base text-gray-400 truncate block capitalize">
                 {item.brand}
               </p>
             </div>

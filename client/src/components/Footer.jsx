@@ -12,6 +12,7 @@ const Footer = () => {
     <div className=" bg-[#FFFFFF] pt-9">
       <div className="mx-auto w-full  px-4 xl:px-4">
         <div className="flex flex-col justify-between sm:px-[18px] md:flex-row md:px-10">
+          
           <div className="md:w-[316px]">
             <p className="text-[18px] font-medium "></p>
             <h1 className=" font-extrabold">
@@ -43,7 +44,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="mt-6 ml-6 flex w-full flex-col justify-between  sm:flex-row md:mt-0 md:max-w-[150px]">
+          <div className="mt-6 md:ml-6 flex w-full flex-col justify-between  sm:flex-row md:mt-0 md:max-w-[150px]">
             <div className="">
               <p className="text-deutziawhite font-inter text-[18px] font-medium leading-normal">
                 About
@@ -252,7 +253,7 @@ const Footer = () => {
       </div>
       <hr className="mt-[30px] " />
       <div className="bg-gray-300">
-        <div className="flex items-center  text-gray-500 justify-between pb-8 pt-[9px] md:py-4 container mx-auto px-4 relative">
+        <div className="flex items-center  text-gray-500 justify-between p-2 md:pb-8 pt-[9px] md:py-4 container mx-auto px-4 relative">
           <p className="text-[10px] font-medium  md:text-[12px]">
             © 2025 Ecommerce
           </p>
@@ -262,7 +263,7 @@ const Footer = () => {
               <option>Urdu</option>
             </select>
             {/* cusstom arrow up */}
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+            <div className="pointer-events-none absolute md:inset-y-0 right-0 flex items-center pr-2">
               <IoIosArrowUp />
             </div>
           </div>
