@@ -73,7 +73,7 @@ const register = asynchandler(async (req, res) => {
       subject: 'Verify your email address',
       html: verifyEmailTemplate({
         name: user.name,
-        url: "https://ecom-full-stack-backend-production.up.railway.app",
+        url: "https://ecommerce-fullstack-design-six.vercel.app",
         id: user._id,
       }),
     });
