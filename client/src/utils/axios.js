@@ -36,29 +36,31 @@ Axios.interceptors.response.use(
 
             const refreshToken = localStorage.getItem('refreshToken');
            
-                const newAccessToken = await refreshAccessToken(refreshToken);
-                if (newAccessToken) {
-                     localStorage.setItem('accessToken', newAccessToken);
+               if(refreshToken){
+                const newAccessToken = await refreshAccessToken(refreshToken)
+                if(newAccessToken){
                     originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
                     return Axios(originalRequest);
                 }
+               }
             
         }
         return Promise.reject(error);
     }
 )
 
-const refreshAccessToken = async () => {
+const refreshAccessToken = async (refreshToken) => {
     try {
         const response = await Axios({
             ...summaryApi.refreshToken,
-          withCredentials: true,
-        })
+            headers: {
+                'Authorization': `Bearer ${refreshToken}`
+            }
+        });
 
-        if(response.data.success){
-            const accessToken = response.data.data.accessToken;
-            return accessToken;
-        }
+        const accessToken = response.data.data.accessToken;
+        localStorage.setItem('accessToken', accessToken);
+        return accessToken;
         
     } catch (error) {
         console.error('Error refreshing access token:', error);
