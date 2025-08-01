@@ -5,7 +5,7 @@ import { addFeature, deleteFeature, getAllFeatures, updateFeature } from '../con
 const featureRouter = Router();
 
 featureRouter.route('/add-feature').post(jwtVerify, addFeature);
-featureRouter.route('/get-all-features').get(jwtVerify, getAllFeatures);
+featureRouter.route('/get-all-features').get(getAllFeatures);
 featureRouter.route('/update-feature').put(jwtVerify, updateFeature);
 featureRouter.route('/delete-feature').delete(jwtVerify, deleteFeature);
 

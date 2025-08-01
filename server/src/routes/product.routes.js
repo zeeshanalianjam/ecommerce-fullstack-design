@@ -6,7 +6,7 @@ const productRouter = Router();
 
 productRouter.route('/add-product').post(jwtVerify,addProduct);
 productRouter.route('/get-products-filters').get(jwtVerify, getFilterProducts);
-productRouter.route('/get-all-products').post(jwtVerify, getAllProducts);
-productRouter.route('/get-products-by-filter').get(jwtVerify, getAllProductsByFilter);
+productRouter.route('/get-all-products').post(getAllProducts);
+productRouter.route('/get-products-by-filter').get(getAllProductsByFilter);
 
 export { productRouter };

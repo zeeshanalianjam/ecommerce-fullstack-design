@@ -53,7 +53,7 @@ const Login = () => {
           password: "",
         });
 
-        navigate("/dashboard/profile");
+        navigate("/list-view");
       }
     } catch (error) {
       handleApiError(error);
