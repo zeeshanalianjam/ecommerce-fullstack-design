@@ -50,7 +50,7 @@ Axios.interceptors.response.use(
 
 const refreshAccessToken = async () => {
     try {
-        const response = await axios({
+        const response = await Axios({
             ...summaryApi.refreshToken,
           withCredentials: true,
         })
