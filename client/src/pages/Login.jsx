@@ -43,7 +43,6 @@ const Login = () => {
       if (response.data.success) {
         toast.success(response.data.message);
         const res = await fetchUserDetails();
-        console.log("res", res);
         dispatch(setUser(res));
         localStorage.setItem("accessToken", response.data.data.accessToken);
         localStorage.setItem("refreshToken", response.data.data.refreshToken);
@@ -53,7 +52,7 @@ const Login = () => {
           password: "",
         });
 
-        navigate("/list-view");
+        navigate("/list-view/category/mobile-accessories");
       }
     } catch (error) {
       handleApiError(error);

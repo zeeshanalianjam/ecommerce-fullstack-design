@@ -12,7 +12,6 @@ const Features = () => {
 
   const [checkedFeatures, setCheckedFeatures] = useState([]);
   const dispatch = useDispatch();
-  console.log("checkedFeatures", checkedFeatures);
 
   useEffect(() => {
     dispatch(setCheckFeatures(checkedFeatures));

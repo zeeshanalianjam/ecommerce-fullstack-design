@@ -10,7 +10,6 @@ function MobileAccessories() {
   const checkBrandsArray = useSelector((state) => state.product.checkBrands);
   const checkFeaturesArray = useSelector((state) => state.product.checkFeatures);
   const allProducts = useSelector((state) => state.product.products);
-  console.log("allProducts", allProducts);
 
   const viewMode = useSelector((state) => state.productLayout);
   

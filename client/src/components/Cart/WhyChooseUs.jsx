@@ -24,7 +24,7 @@ const WhyChooseUs = () => {
       <div className="container   my-4  rounded-md bg-white">
         <div className="flex space-x-14 items-center ">
         {features.map((feature, index) => (
-          <div className="flex space-x-4 items-center">
+          <div key={index} className="flex space-x-4 items-center">
             <div className="w-10 h-10 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center">
               <IoMdLock size={20} />
             </div>

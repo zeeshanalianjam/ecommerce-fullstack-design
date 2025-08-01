@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 const Automobiles = () => {
   const user = useSelector((state) => state.user);
-  console.log("user", user);
   
   return (
     <div className="flex flex-col md:flex-row w-full  font-sans">
