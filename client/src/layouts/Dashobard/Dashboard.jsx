@@ -1,8 +1,14 @@
 import React, { useEffect } from 'react'
 import { UserMenu } from '../../components/export'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  if(location.pathname === '/dashboard' || location.pathname === '/dashboard/'){
+    navigate('/dashboard/profile');
+  }
 
   return (
     <section className='bg-white'>
