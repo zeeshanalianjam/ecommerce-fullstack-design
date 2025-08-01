@@ -8,9 +8,16 @@ import { Axios } from "../utils/axios";
 import { summaryApi } from "../common/summaryApi";
 import toast from "react-hot-toast";
 import { setUser } from "../redux/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const user = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if(!user){
+      navigate("/login");
+    }
+  }, [user])
   const [showUserProfileEdit, setShowUserProfileEdit] = useState(false);
   const [userData, setUserData] = useState({
     name: user.name,

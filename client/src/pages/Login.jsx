@@ -42,17 +42,21 @@ const Login = () => {
 
       if (response.data.success) {
         toast.success(response.data.message);
-        const res = await fetchUserDetails();
-        dispatch(setUser(res));
+
         localStorage.setItem("accessToken", response.data.data.accessToken);
         localStorage.setItem("refreshToken", response.data.data.refreshToken);
+
+        const res = await fetchUserDetails();
+        if(res){
+          dispatch(setUser(res));
+        }
 
         setData({
           email: "",
           password: "",
         });
 
-        navigate("/list-view/category/mobile-accessories");
+        navigate("/list-view");
       }
     } catch (error) {
       handleApiError(error);

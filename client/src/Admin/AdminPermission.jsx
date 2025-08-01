@@ -1,6 +1,5 @@
 import React from "react";
 import { isAdmin } from "./isAdmin";
-import { User } from "../../../server/src/models/user.models";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 

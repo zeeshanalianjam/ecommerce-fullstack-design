@@ -11,6 +11,7 @@ import UploadProduct from "./UploadProduct";
 import Brands from "./Brands";
 import Features from "./Features";
 import Products from "./ProductsAdmin";
+import PageNotFound from "./PageNotFound";
 
 export {
   Home,
@@ -26,4 +27,5 @@ export {
   Brands,
   Features,
   Products,
+  PageNotFound,
 };

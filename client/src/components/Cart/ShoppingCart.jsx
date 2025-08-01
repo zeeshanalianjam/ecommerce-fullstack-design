@@ -47,7 +47,7 @@ const ShoppingCart = () => {
       <div className="container grid grid-cols-[1fr_280px]  gap-6 my-4  bg-white">
         {/* shopping cart items */}
         <div className=" border px-4 py-6 rounded-md">
-          {data.length === 0 && (
+          {data?.length === 0 && (
             <h1 className="text-center text-2xl font-semibold">
               Your Cart is Empty
             </h1>

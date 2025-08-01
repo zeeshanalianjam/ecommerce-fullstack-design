@@ -10,6 +10,7 @@ import {
   ListView,
   Login,
   MyCart,
+  PageNotFound,
   Products,
   Profile,
   Register,
@@ -28,6 +29,8 @@ import {
   ToolsEquipments,
 } from "../components/export";
 import Dashboard from "../layouts/Dashobard/Dashboard";
+import AdminPermission from "../Admin/AdminPermission";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -74,27 +77,27 @@ const router = createBrowserRouter([
       },
       {
         path: "list-view",
-        element: <ListView />,
+        element: <ProtectedRoute><ListView /></ProtectedRoute>,
         children: [
           {
             path: "/list-view/category/mobile-accessories",
-            element: <MobileAccessories />,
+            element:<ProtectedRoute><MobileAccessories /></ProtectedRoute>, 
           },
         ],
       },
       {
         path: "details",
-        element: <Details />,
+        element: <ProtectedRoute><Details /></ProtectedRoute>, // <Details />,
         children: [
           {
             path: "/details/:product-id/description",
-            element: <Description />,
+            element: <ProtectedRoute><Description /></ProtectedRoute>, // <Description />,
           },
         ],
       },
       {
         path: "cart",
-        element: <MyCart />,
+        element: <ProtectedRoute><MyCart /></ProtectedRoute>, // <MyCart />,
       },
       {
         path: "register",
@@ -110,36 +113,41 @@ const router = createBrowserRouter([
       },
       {
         path: "dashboard",
-        element: <Dashboard />,
+        element:<ProtectedRoute><Dashboard /></ProtectedRoute>, // <Dashboard />,
         children: [
           {
             path: "/dashboard/profile",
-            element: <Profile />,
+            element:<ProtectedRoute><Profile /></ProtectedRoute>,
           },
           {
             path: "/dashboard/category",
-            element: <Category />,
+            element:<ProtectedRoute><AdminPermission><Category /></AdminPermission></ProtectedRoute> ,
           },
           {
             path: "/dashboard/brands",
-            element: <Brands />,
+            element:<ProtectedRoute><AdminPermission><Brands /></AdminPermission></ProtectedRoute> ,
           },
           {
             path: "/dashboard/features",
-            element: <Features />,
+            element:<ProtectedRoute><AdminPermission><Features /></AdminPermission></ProtectedRoute> ,
           },
           {
             path: "/dashboard/upload-product",
-            element: <UploadProduct />,
+            element: <ProtectedRoute><AdminPermission><UploadProduct /></AdminPermission></ProtectedRoute>,
           },
           {
             path: "/dashboard/products",
-            element: <Products />,
+            element: <ProtectedRoute><AdminPermission><Products /></AdminPermission></ProtectedRoute>,
           },
         ],
       },
+      {
+        path: "*",
+        element: <PageNotFound />,
+      }
     ],
   },
+  
 ]);
 
 export { router };

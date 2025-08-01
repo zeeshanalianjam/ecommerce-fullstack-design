@@ -31,7 +31,7 @@ const Automobiles = () => {
       <div className="w-full md:w-[250px] hidden md:flex flex-col space-y-4 pl-4 bg-white">
         <div className="bg-[#E3F0FF] p-2 rounded shadow ">
           <div className="flex items-center pb-2">
-            {user?.avatar ? (
+            {user && user?.avatar ? (
               <img src={user?.avatar} alt="" className="w-12  mr-2" />
             ): (
               <img src={avatar} alt="" className="w-12  mr-2" />

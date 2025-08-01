@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 /* scroll smooth */
@@ -11,21 +11,33 @@ html {
   scroll-behavior: smooth;
 }
 
-.scrollBar{
+.scrollBar {
   overflow-x: auto;
 }
-.scrollBar::-webkit-scrollbar{
+.scrollBar::-webkit-scrollbar {
   height: 1px;
 }
 
-.scrollBar::-webkit-scrollbar-track{
+.scrollBar::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
-.scrollBar::-webkit-scrollbar-thumb{
+.scrollBar::-webkit-scrollbar-thumb {
   background: #888;
 }
 
-.scrollBar::-webkit-scrollbar-thumb:hover{
+.scrollBar::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
