@@ -20,7 +20,7 @@ const WhyChooseUs = () => {
     },
   ];
   return (
-    <section className="container mx-auto px-4">
+    <section className="hidden md:block container mx-auto px-4">
       <div className="container   my-4  rounded-md bg-white">
         <div className="flex space-x-14 items-center ">
         {features.map((feature, index) => (

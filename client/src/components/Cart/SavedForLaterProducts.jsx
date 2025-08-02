@@ -33,12 +33,12 @@ const SavedForLaterProducts = () => {
     },
   ];
   return (
-    <section className="container mx-auto px-4 ">
-      <div className="container border px-4 my-4  rounded-md bg-white">
+    <section className="container mx-auto md:px-4 ">
+      <div className="md:container border px-4 my-4  rounded-md bg-white">
         <div className=" py-4">
           <h1 className="font-semibold text-xl">Saved for later</h1>
         </div>
-        <div className="flex justify-center items-center space-x-8 ">
+        <div className="flex overflow-x-auto justify-center items-center space-x-2 md:space-x-8 ">
           {products.map((product, index) => (
             <div key={index} className="flex items-center gap-2 mb-4 pb-2 ">
               <SavedForLaterProductCard product={product} />

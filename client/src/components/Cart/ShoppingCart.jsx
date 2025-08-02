@@ -44,7 +44,7 @@ const ShoppingCart = () => {
         <h1 className="font-semibold text-2xl">My Cart</h1>
         <h2 className="font-semibold text-2xl">({data?.length > 0 ? data?.length : 0}) </h2>
       </div>
-      <div className="container grid grid-cols-[1fr_280px]  gap-6 my-4  bg-white">
+      <div className="container grid md:grid-cols-[1fr_280px]  gap-6 my-4  bg-white">
         {/* shopping cart items */}
         <div className=" border px-4 py-6 rounded-md">
           {data?.length === 0 && (
@@ -86,19 +86,19 @@ const ShoppingCart = () => {
               </div>
             </div>
 
-            <div className="flex flex-col space-y-4">
-              <div className="flex justify-end ">
-                <p className="font-medium">{item?.price?.currentPrice} PKR</p>
+            <div className="flex flex-row-reverse  md:flex-col pt-4 md:pt-0 md:space-y-4">
+              <div className="md:flex md:justify-end w-40 md:w-auto">
+                <p className="md:font-medium">{item?.price?.currentPrice} PKR</p>
               </div>
-              <div className="flex items-center justify-between w-full relative">
+              <div className="md:flex items-center justify-between w-full relative">
                 <select
                   aria-label="Select quantity"
-                  className="py-2 px-2 w-32 border rounded-md border-gray-200 focus:outline-none appearance-none "
+                  className="py-2 px-2 text-sm w-20 md:w-32 border rounded-md border-gray-200 focus:outline-none md:appearance-none "
                 >
                   <option value={item?.quantity}>Qty: {item?.quantity}</option>
                 </select>
                 {/* Custom Arrow */}
-                <div className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2 text-[#1C1C1C] ">
+                <div className="hidden md:block pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2 text-[#1C1C1C] ">
                   <MdKeyboardArrowDown size={22} />
                 </div>
               </div>
@@ -108,7 +108,7 @@ const ShoppingCart = () => {
             
           
           {/* buttons */}
-          <div className="md:flex justify-between items-center">
+          <div className="flex justify-between items-center">
             <Link 
               to="/list-view"
               className="bg-[#0D6EFD] hover:bg-[#0B5ED7] text-white px-5 py-2 rounded-md flex items-center space-x-2 mt-4 mb-4 transition-all duration-300"

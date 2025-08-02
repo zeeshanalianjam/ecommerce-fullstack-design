@@ -28,18 +28,25 @@ const Header = () => {
       <div className="w-full">
         <nav className="container px-4 mx-auto relative  py-2 flex justify-between items-center bg-white   ">
           <div className="md:hidden flex">
-            {location.pathname.startsWith("/list-view") || location.pathname.startsWith("/details") ? (
+            {location.pathname.startsWith("/list-view") || location.pathname.startsWith("/details") || location.pathname.startsWith("/cart") ? (
               <>
                 {" "}
                 <Link to={location.pathname.startsWith("/list-view") ? "/" : "/list-view"} className="flex items-center bg-white text-black  py-2  ">
-                  <AiOutlineArrowLeft className="h-5 w-5" />
-                  {location.pathname.startsWith("/details") ? <></> : <> <span className="ml-4 font-medium">Mobile accessory</span></>}
+                 {location.pathname.startsWith("/cart") ? <></> : <AiOutlineArrowLeft className="h-5 w-5" />}
+                  {location.pathname.startsWith("/details") ? <></> : <> {location.pathname.startsWith("/cart") ? <></> : <span className="ml-4 font-medium">Mobile accessory</span> }</>}
                 </Link>
+                {location.pathname.startsWith("/cart") &&  <>
+                <Link to="/list-view/category/mobile-accessories" className="flex items-center bg-white text-black  py-2  ">
+                <AiOutlineArrowLeft className="h-5 w-5" /> <span className="ml-4 font-medium">Shoping Cart</span>
+                </Link>
+                </> }
               </>
             ) : (
-              <Link to="/" className=" font-bold ml-10 md:ml-0">
+              <>
+              {location.pathname.startsWith("/cart") ?  <></> : <Link to="/" className=" font-bold ml-10 md:ml-0">
                 <img src={logo} alt="" className="w-28 md:w-40" />
-              </Link>
+              </Link>}
+              </>
             )}
           </div>
           <Link to="/" className="hidden md:block font-bold ml-10 md:ml-0">
@@ -75,7 +82,7 @@ const Header = () => {
               <FaUser size={20} />
             </Link>
           </div>
-          {location.pathname.startsWith("/list-view") || location.pathname.startsWith("/details") ? (
+          {location.pathname.startsWith("/list-view") || location.pathname.startsWith("/details") || location.pathname.startsWith("/cart") ? (
             <></>
           ) : (
             <>
