@@ -5,7 +5,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 
 const Tabs = () => {
   return (
-   <nav className="bg-white w-full py-5 ">
+   <nav className="bg-white hidden md:block w-full py-5 ">
       <div className="container font-medium text-[#8B96A5] mx-auto px-4 flex items-center justify-between">
         {/* Left Side */}
         <div className="flex items-center space-x-6 text-sm relative">

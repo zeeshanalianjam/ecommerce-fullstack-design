@@ -60,19 +60,19 @@ const ProductDetailsCard = () => {
   Math.floor(Math.random() * 900) + 100 // generates number between 100–999
 );
   return (
-    <div className="container mx-auto px-4">
-      <div className="container mx-auto p-4 rounded-md bg-white shadow-lg border">
-        <div className="grid grid-cols-[380px_1fr_300px] ">
+    <div className="md:container mx-auto md:px-4">
+      <div className="md:container mx-auto md:p-4 md:rounded-md bg-white shadow-lg border">
+        <div className="grid md:grid-cols-[380px_1fr_300px] ">
           {/* Product Images */}
-          <div className=" mb-8">
+          <div className="mb-4 md:mb-8">
             <img
               src={product?.image?.[0]}
               alt="Product"
-              className="w-96 p-10 h-auto rounded-md  border mb-4"
+              className="w-[350px] md:w-96 md:p-10 h-auto md:rounded-md  md:border mb-4"
               id="mainImage"
               
             />
-            <div className="flex space-x-2 py-4 justify-center overflow-x-auto">
+            <div className="flex space-x-2 md:py-4 justify-center overflow-x-auto">
               {product?.image?.map((image, index) => (
                 <img
                   key={index}
@@ -90,10 +90,10 @@ const ProductDetailsCard = () => {
                   )}
           </div>
           {/* Product Details */}
-          <div className=" px-6">
+          <div className="px-2 md:px-6 flex md:block flex-col-reverse md:flex-none">
             {
               product?.stock > 0 ? (
-                <div className="flex items-center space-x-2 mb-2 text-[#00B517]">
+                <div className="hidden md:flex items-center space-x-2 mb-2 text-[#00B517]">
               <IoMdCheckmark size={20} />
               <span> In Stock</span>
             </div>
@@ -109,12 +109,12 @@ const ProductDetailsCard = () => {
               {product?.name}
             </h2>
             {cartProducts.find((item) => item._id === product._id) ? (
-              <div className="flex items-center space-x-2 text-[#00B517]">
+              <div className="hidden md:flex items-center space-x-2 text-[#00B517]">
               <IoMdCheckmark size={20} />
               <span> In Cart</span>
             </div>
             ) : (
-              <div className="flex items-center space-x-2 text-[#FF0000]">
+              <div className="hidden md:flex items-center space-x-2 text-[#FF0000]">
               <IoCloseOutline size={20} />
               <span> Not in Cart</span>
             </div>  
@@ -129,12 +129,12 @@ const ProductDetailsCard = () => {
               {Array(5)
                 .fill()
                 .map((_, i) => (
-                  <div key={i} className="text-yellow-500">
+                  <div key={i} className="text-yellow-500 ">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="currentColor"
-                      className="size-5 text-[#FF9017]"
+                      className="size-3 md:size-5 text-[#FF9017]"
                     >
                       <path
                         fillRule="evenodd"
@@ -145,18 +145,18 @@ const ProductDetailsCard = () => {
                   </div>
                 ))}
 
-              <span className="ml-2 text-[#FF9017]">{product?.ratings}.5 </span>
+              <span className="ml-2 text-[#FF9017] ">{product?.ratings}.5 </span>
               <span className="mx-2 text-gray-400">•</span>
-              <span className="ml-2 text-gray-600 flex items-center space-x-2">
+              <span className="md:ml-2 text-gray-600 flex items-center space-x-2">
                 <MdOutlineMessage className="relative top-0.5" />{" "}
                 <span>{product?.reviews.length > 0 ? product?.reviews.length : "0"} Reviews</span>{" "}
               </span>
               <span className="mx-2 text-gray-400">•</span>
-              <span className="mx-2 text-gray-600 flex items-center space-x-2">
+              <span className="md:mx-2 text-gray-600 flex items-center space-x-2">
                 <MdOutlineShoppingBasket /> <span>{randomNumbers?.[0]} Sold</span>
               </span>
             </div>
-            <div className="mb-4 bg-[#FFF0DF] p-4 rounded-md flex space-x-8 items-center">
+            <div className="mb-4 bg-[#FFF0DF] p-4 rounded-md hidden md:flex space-x-8 items-center">
               <div className="flex flex-col  ">
                 <span className="text-[17px] font-bold text-[#FA3434] mr-2">
                   {product?.price?.currentPrice} PKR
@@ -173,7 +173,7 @@ const ProductDetailsCard = () => {
               </div>
             </div>
 
-            <div className="space-y-4 my-4">
+            <div className="space-y-4 my-4 hidden md:block">
               <div className="flex items-center space-x-24 ">
                 <p className="text-gray-500 ">Price :</p>
                 {product?.price?.negotiable ? (
@@ -246,7 +246,7 @@ const ProductDetailsCard = () => {
                 Seller's profile
               </button>
             </div>
-            <div className="flex items-center mt-8 w-fit mx-auto space-x-2 text-blue-500 cursor-pointer ">
+            <div className="hidden md:flex items-center mt-8 w-fit mx-auto space-x-2 text-blue-500 cursor-pointer ">
               <IoIosHeartEmpty size={20} /> <span>Save for later</span>
             </div>
           </div>

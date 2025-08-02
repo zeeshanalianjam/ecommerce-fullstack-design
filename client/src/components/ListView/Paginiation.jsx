@@ -31,9 +31,11 @@ const Paginiation = () => {
           className="flex items-center justify-between"
         >
           {/* mobile view */}
-          <div className="flex justify-between items-center flex-1 lg:hidden">
+          <div className="flex justify-between items-center flex-1 md:hidden">
             <div className="w-10">
               <button
+              onClick={() => handlePageChange(currentPage - 1)}
+                      disabled={currentPage === 1}
                 title="Previous"
                 type="button"
                 className=" flex items-center justify-center rounded-full relative outline-none hover:bg-gray-500/5 disabled:opacity-70 disabled:cursor-not-allowed disabled:pointer-events-none text-yellow-500 focus:bg-yellow-500/10 dark:hover:bg-gray-300/5 w-10 h-10"
@@ -58,19 +60,25 @@ const Paginiation = () => {
               </button>
             </div>
             <div className="flex items-center gap-2 rtl:space-x-reverse">
-              <select className="h-8 text-sm px-2 leading-none transition duration-75 border-gray-300 rounded-lg shadow-sm outline-none focus:border-yellow-500 focus:ring-1 focus:ring-inset focus:ring-yellow-500 dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:focus:border-yellow-500">
-                <option value={5}>5</option>
-                <option value={10}>10</option>
-                <option value={25}>25</option>
-                <option value={50}>50</option>
-                <option value={-1}>All</option>
-              </select>
-              <span className="text-sm font-medium dark:text-white">
-                per page
-              </span>
+             <label>
+                  <select
+                    value={show}
+                    onChange={(e) => setShow(e.target.value)}
+                    className="h-8 text-sm  px-2 leading-none transition duration-75 border  rounded-lg shadow-sm outline-none focus:border-yellow-500 focus:ring-1 focus:ring-inset focus:ring-yellow-500 dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:focus:border-yellow-500"
+                  >
+                    <option value={5}>Show 5</option>
+                    <option value={10}>Show 10</option>
+                    <option value={15}>Show 15</option>
+                  </select>
+                </label>
+                {/* Custom Arrow */}
+               
+             
             </div>
             <div className="w-10">
               <button
+              onClick={() => handlePageChange(currentPage + 1)}
+                      disabled={currentPage === totalPages}
                 title="Next"
                 type="button"
                 className="flex items-center justify-center rounded-full relative outline-none hover:bg-gray-500/5 disabled:opacity-70 disabled:cursor-not-allowed disabled:pointer-events-none text-yellow-500 focus:bg-yellow-500/10 dark:hover:bg-gray-300/5 w-10 h-10"

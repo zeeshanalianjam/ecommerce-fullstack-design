@@ -4,7 +4,7 @@ const ShopNowWithSuperDiscount = () => {
   return (
     <section className="container mx-auto px-4">
       <div className="container border px-4 my-4 py-4 rounded-md bg-[#237CFF]">
-        <div className="flex items-center  text-white justify-between pb-8 pt-[9px] md:py-4 container mx-auto  relative">
+        <div className="md:flex space-y-3 md:space-y-0 items-center  text-white justify-between pb-8 pt-[9px] md:py-4 container mx-auto  relative">
           <div>
             <p className="text-2xl font-semibold">
               Super discount on more than 100 USD

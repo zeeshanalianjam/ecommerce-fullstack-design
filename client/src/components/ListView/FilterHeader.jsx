@@ -38,7 +38,7 @@ useEffect(() => {
           <span className=" font-medium text-gray-700">Verified only</span>
         </label>
 
-        <div className="relative">
+        <div className="relative hidden md:block">
           {/* Dropdown Sort */}
           <select
             value={sortOption}

@@ -44,12 +44,12 @@ const RelatedProducts = () => {
     },
   ];
   return (
-    <section className="container mx-auto px-4 ">
-      <div className="container border px-4 my-4  rounded-md bg-white">
+    <section className="container mx-auto md:px-4 ">
+      <div className="container border px-4 md:my-4  rounded-md bg-white">
          <div className=" py-4">
-        <h1 className="font-semibold text-xl">Related products</h1>
+        <h1 className="font-semibold md:text-xl">Related products</h1>
       </div>
-        <div className="flex justify-center items-center space-x-8 ">
+        <div className="flex overflow-x-auto justify-center items-center gap-2 md:space-x-8 ">
           {products.map((product, index) => (
             <div key={index} className="flex items-center gap-2 mb-4 pb-2 ">
               <RelatedProductCard product={product} />

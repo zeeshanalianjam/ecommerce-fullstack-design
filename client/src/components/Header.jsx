@@ -28,12 +28,12 @@ const Header = () => {
       <div className="w-full">
         <nav className="container px-4 mx-auto relative  py-2 flex justify-between items-center bg-white   ">
           <div className="md:hidden flex">
-            {location.pathname.startsWith("/list-view") ? (
+            {location.pathname.startsWith("/list-view") || location.pathname.startsWith("/details") ? (
               <>
                 {" "}
-                <Link to="/" className="flex items-center bg-white text-black  py-2  ">
+                <Link to={location.pathname.startsWith("/list-view") ? "/" : "/list-view"} className="flex items-center bg-white text-black  py-2  ">
                   <AiOutlineArrowLeft className="h-5 w-5" />
-                  <span className="ml-4 font-medium">Mobile accessory</span>
+                  {location.pathname.startsWith("/details") ? <></> : <> <span className="ml-4 font-medium">Mobile accessory</span></>}
                 </Link>
               </>
             ) : (
@@ -75,7 +75,7 @@ const Header = () => {
               <FaUser size={20} />
             </Link>
           </div>
-          {location.pathname.startsWith("/list-view") ? (
+          {location.pathname.startsWith("/list-view") || location.pathname.startsWith("/details") ? (
             <></>
           ) : (
             <>
@@ -284,10 +284,14 @@ const Header = () => {
         <> </>
       ) : (
         <>
-          {" "}
-          <div className="">
+          {location.pathname.startsWith("/details") ? <></> : <div className="">
             <Navbar />
-          </div>{" "}
+          </div>}
+
+          <div className="hidden md:block">
+            <Navbar />
+          </div>
+          
         </>
       )}
     </>
