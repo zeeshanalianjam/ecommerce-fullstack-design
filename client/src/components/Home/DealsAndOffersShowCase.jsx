@@ -1,5 +1,5 @@
 // EcommerceShowcase.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import watch from "../../assets/tech/8.jpg";
 import laptop from "../../assets/tech/7.jpg";
 import camera from "../../assets/tech/6.jpg";
@@ -14,7 +14,44 @@ const products = [
   { category: "Canon camreras", discount: "-10%", url: canon },
 ];
 
+
 const DealsAndOffersShowCase = () => {
+  const targetDate = new Date('2025-08-05T11:59:59');
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  function calculateTimeLeft  ()  {
+    const currentDate = new Date();
+    const defference = targetDate - currentDate;
+  
+       const seconds = Math.floor((defference / 1000) % 60);
+    const minutes = Math.floor((defference / 1000 / 60) % 60);
+    const hours = Math.floor((defference / (1000 * 60 * 60)) % 24);
+    const days = Math.floor(defference / (1000 * 60 * 60 * 24));
+
+    return {
+      defference,
+      days,
+      hours,
+      minutes,
+      seconds
+    }
+  }
+
+  useEffect(()=> {
+    const interval = setInterval(() => {
+      const remaingTime = calculateTimeLeft();
+      setTimeLeft(remaingTime);
+
+      if(remaingTime.defference <= 0){
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [])
+
+
+
   return (
     <section className="md:container mx-auto md:px-4 md:my-4">
       <div className="container mx-auto grid md:grid-cols-[250px_repeat(5,1fr)]   border-t border-b rounded-md ">
@@ -29,28 +66,28 @@ const DealsAndOffersShowCase = () => {
             {/* Days */}
             <div className="w-10 h-12 bg-gray-100 md:bg-[#606060] rounded hidden md:flex flex-col items-center justify-center">
               <span className="md:text-lg text-gray-600 font-medium md:text-white leading-none">
-                04
+                {timeLeft.days}
               </span>
               <span className="text-xs text-gray-600 md:text-white">Days</span>
             </div>
             {/* Hours */}
             <div className="w-10 h-12 bg-gray-100 md:bg-[#606060] rounded flex flex-col items-center justify-center">
               <span className="md:text-lg text-gray-600 font-medium md:text-white leading-none">
-                13
+                {timeLeft.hours}
               </span>
               <span className="text-xs text-gray-600 md:text-white">Hour</span>
             </div>
             {/* Mins */}
             <div className="w-10 h-12 bg-gray-100 md:bg-[#606060] rounded flex flex-col items-center justify-center">
               <span className="md:text-lg text-gray-600 font-medium md:text-white leading-none">
-                34
+                {timeLeft.minutes}
               </span>
               <span className="text-xs text-gray-600 md:text-white">Min</span>
             </div>
             {/* Sec */}
             <div className="w-10 h-12 bg-gray-100 md:bg-[#606060] rounded flex flex-col items-center justify-center">
               <span className="md:text-lg text-gray-600 font-medium md:text-white leading-none">
-                56
+                {timeLeft.seconds}
               </span>
               <span className="text-xs text-gray-600 md:text-white">Sec</span>
             </div>

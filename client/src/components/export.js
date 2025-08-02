@@ -55,6 +55,7 @@ import EditFeatureModel from "./Features/EditFeatureModel";
 import UploadFeatureModel from "./Features/UploadFeatureModel";
 import ViewImage from "./Products/ViewImage";
 import { ProductCardAdmin } from "./ProductCardAdmin";
+import MobileSearchBar from "./MobileSearchBar";
 
 export {
   Header,
@@ -114,4 +115,5 @@ export {
   UploadFeatureModel,
   ViewImage,
   ProductCardAdmin,
+  MobileSearchBar,
 };

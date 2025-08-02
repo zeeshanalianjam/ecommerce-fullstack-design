@@ -8,6 +8,7 @@ import { FaHeart } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { Navbar } from "./export";
 import { useSelector } from "react-redux";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 const Header = () => {
   const location = useLocation();
@@ -17,22 +18,36 @@ const Header = () => {
   const cartProducts = JSON.parse(localStorage.getItem("cartProducts"));
 
   useEffect(() => {
-    if(cartProducts){
+    if (cartProducts) {
       setAddToCart(cartProducts);
     }
-  }, [myCart])
-
+  }, [myCart]);
 
   return (
     <>
       <div className="w-full">
         <nav className="container px-4 mx-auto relative  py-2 flex justify-between items-center bg-white   ">
-          <Link to="/" className=" font-bold ml-10 md:ml-0">
+          <div className="md:hidden flex">
+            {location.pathname.startsWith("/list-view") ? (
+              <>
+                {" "}
+                <Link to="/" className="flex items-center bg-white text-black  py-2  ">
+                  <AiOutlineArrowLeft className="h-5 w-5" />
+                  <span className="ml-4 font-medium">Mobile accessory</span>
+                </Link>
+              </>
+            ) : (
+              <Link to="/" className=" font-bold ml-10 md:ml-0">
+                <img src={logo} alt="" className="w-28 md:w-40" />
+              </Link>
+            )}
+          </div>
+          <Link to="/" className="hidden md:block font-bold ml-10 md:ml-0">
             <img src={logo} alt="" className="w-28 md:w-40" />
           </Link>
           {/* mobile view */}
           <div className="md:hidden flex space-x-4">
-  <Link
+            <Link
               to="/cart"
               className="relative md:hidden flex items-center text-gray-500 flex-col justify-center lg:mx-auto py-1.5 cursor-pointer text-center"
             >
@@ -41,7 +56,7 @@ const Header = () => {
                 <span className="absolute top-0 right-0 flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full">
                   {addToCart.length}
                 </span>
-              ): (
+              ) : (
                 <span className="absolute top-0 -right-2 flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full">
                   0
                 </span>
@@ -52,30 +67,36 @@ const Header = () => {
 
               {/* Text */}
             </Link>
-            
-              <Link
+
+            <Link
               to="/dashboard/profile"
               className=" md:hidden flex items-center text-gray-500 flex-col justify-center lg:mx-auto py-1.5  cursor-pointer text-center"
             >
               <FaUser size={20} />
             </Link>
           </div>
-         
-          <div className="lg:hidden absolute top-1/2 left-9 transform -translate-y-1/2 -translate-x-[70%]">
-            <button
-              className="navbar-burger flex items-center text-violet-600 dark:text-gray-100 p-1"
-              id="navbar_burger"
-            >
-              <svg
-                className="block h-6 w-6 fill-current"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <title>Hamberger menu</title>
-                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-              </svg>
-            </button>
-          </div>
+          {location.pathname.startsWith("/list-view") ? (
+            <></>
+          ) : (
+            <>
+              {" "}
+              <div className="md:hidden absolute top-1/2 left-9 transform -translate-y-1/2 -translate-x-[70%]">
+                <button
+                  className="navbar-burger flex items-center text-violet-600 dark:text-gray-100 p-1"
+                  id="navbar_burger"
+                >
+                  <svg
+                    className="block h-6 w-6 fill-current"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title>Hamberger menu</title>
+                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                  </svg>
+                </button>
+              </div>
+            </>
+          )}
 
           {/* desktop view */}
           <ul className="hidden absolute top-1/2 left-1/2    transform -translate-y-1/2 -translate-x-[70%] lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
@@ -137,7 +158,7 @@ const Header = () => {
                 <span className="absolute top-0 right-0 flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full">
                   {addToCart.length}
                 </span>
-              ): (
+              ) : (
                 <span className="absolute top-0 right-0 flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full">
                   0
                 </span>
@@ -152,7 +173,6 @@ const Header = () => {
           </div>
         </nav>
 
-        
         {/* mobile navbar */}
         <div className="navbar-menu relative z-50 hidden">
           <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-50" />

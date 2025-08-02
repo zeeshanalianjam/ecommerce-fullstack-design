@@ -3,11 +3,15 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 // import { Menu } from 'lucide-react';
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import MobileSearchBar from "../MobileSearchBar";
 
 const Navbar = () => {
   return (
     <nav className="bg-white w-full  py-3 border-b border-t border-gray-200">
+      {/* mobile search bar */}
+      <MobileSearchBar />
       <div className="container md:font-medium text-[#1C1C1C] mx-auto px-4 flex items-center justify-between">
+        
         {/* Left side */}
         <div className="flex  overflow-x-auto items-center md:space-x-4 scrollBar">
           <RxHamburgerMenu className="w-6 h-6 hidden md:block" />
