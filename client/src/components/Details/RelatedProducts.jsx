@@ -49,7 +49,7 @@ const RelatedProducts = () => {
          <div className=" py-4">
         <h1 className="font-semibold md:text-xl">Related products</h1>
       </div>
-        <div className="flex overflow-x-auto justify-center items-center gap-2 md:space-x-8 ">
+        <div className="flex overflow-x-auto md:overflow-hidden justify-center items-center gap-2 md:space-x-8 scrollBar ">
           {products.map((product, index) => (
             <div key={index} className="flex items-center gap-2 mb-4 pb-2 ">
               <RelatedProductCard product={product} />

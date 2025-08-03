@@ -71,6 +71,7 @@ function App() {
     }
   };
 
+  
   // fetch all features
   const fetchAllFeatures = async () => {
     try {
@@ -80,12 +81,15 @@ function App() {
 
       if (response.data.success) {
         dispatch(setAllFeatures(response.data.data));
+        
       }
     } catch (error) {
       handleApiError(error);
     }
   };
+  
 
+ 
   // fetch all products
   const fetchAllProducts = async () => {
     try {

@@ -295,9 +295,7 @@ const Header = () => {
             <Navbar />
           </div>}
 
-          <div className="hidden md:block">
-            <Navbar />
-          </div>
+          
           
         </>
       )}
